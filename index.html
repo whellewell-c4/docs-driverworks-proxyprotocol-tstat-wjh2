@@ -638,10 +638,16 @@
             <a href="#thermostat-proxy-commands" class="toc-h1 toc-link" data-title="Thermostat Proxy Commands">Thermostat Proxy Commands</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#thermostat-proxy-commands-set_preset" class="toc-h2 toc-link" data-title="SET_PRESET">SET_PRESET</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-proxy-commands-dec_setpoint_cool" class="toc-h2 toc-link" data-title="DEC_SETPOINT_COOL">DEC_SETPOINT_COOL</a>
                   </li>
                   <li>
-                    <a href="#thermostat-proxy-commands-set_preset" class="toc-h2 toc-link" data-title="SET_PRESET">SET_PRESET</a>
+                    <a href="#thermostat-proxy-commands-query_schedule" class="toc-h2 toc-link" data-title="QUERY_SCHEDULE">QUERY_SCHEDULE</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-query_schedule_events" class="toc-h2 toc-link" data-title="QUERY_SCHEDULE_EVENTS">QUERY_SCHEDULE_EVENTS</a>
                   </li>
                   <li>
                     <a href="#thermostat-proxy-commands-dec_setpoint_heat" class="toc-h2 toc-link" data-title="DEC_SETPOINT_HEAT">DEC_SETPOINT_HEAT</a>
@@ -669,12 +675,6 @@
                   </li>
                   <li>
                     <a href="#thermostat-proxy-commands-preset_modify" class="toc-h2 toc-link" data-title="PRESET_MODIFY">PRESET_MODIFY</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-proxy-commands-query_schedule" class="toc-h2 toc-link" data-title="QUERY_SCHEDULE">QUERY_SCHEDULE</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-proxy-commands-query_schedule_events" class="toc-h2 toc-link" data-title="QUERY_SCHEDULE_EVENTS">QUERY_SCHEDULE_EVENTS</a>
                   </li>
                   <li>
                     <a href="#thermostat-proxy-commands-set_buttons_lock" class="toc-h2 toc-link" data-title="SET_BUTTONS_LOCK">SET_BUTTONS_LOCK</a>
@@ -3228,22 +3228,6 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <p><code>None</code></p>
 <h1 id='thermostat-proxy-commands'>Thermostat Proxy Commands</h1>
 
-<h2 id='thermostat-proxy-commands-dec_setpoint_cool'>DEC_SETPOINT_COOL</h2>
-
-<p>Used to decrease the cool set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_COOL</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
-
-<h3 id='thermostat-proxy-commands-dec_setpoint_cool-name'>Name</h3>
-
-<p><code>DEC_SETPOINT_COOL ()</code></p>
-
-<h3 id='thermostat-proxy-commands-dec_setpoint_cool-parameter'>Parameter</h3>
-
-<p><code>None</code></p>
-
-<h3 id='thermostat-proxy-commands-dec_setpoint_cool-returns'>Returns</h3>
-
-<p><code>None</code></p>
-
 <h2 id='thermostat-proxy-commands-set_preset'>SET_PRESET</h2>
 
 <p>Runs a Preset regardless if there is an event scheduled for it.</p>
@@ -3269,6 +3253,38 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <h3 id='thermostat-proxy-commands-set_preset-returns'>Returns</h3>
 
 <p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-dec_setpoint_cool'>DEC_SETPOINT_COOL</h2>
+
+<p>Used to decrease the cool set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_COOL</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_cool-name'>Name</h3>
+
+<p><code>DEC_SETPOINT_COOL ()</code></p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_cool-parameter'>Parameter</h3>
+
+<p><code>None</code></p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_cool-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-query_schedule'>QUERY_SCHEDULE</h2>
+
+<p>Used for the old .ccz and a few older thermostats for scheduling purposes.</p>
+
+<h3 id='thermostat-proxy-commands-query_schedule-name'>Name</h3>
+
+<p><code>QUERY_SCHEDULE ()</code></p>
+
+<h2 id='thermostat-proxy-commands-query_schedule_events'>QUERY_SCHEDULE_EVENTS</h2>
+
+<p>Used for the old .ccz and a few older thermostats for scheduling purposes.</p>
+
+<h3 id='thermostat-proxy-commands-query_schedule_events-name'>Name</h3>
+
+<p><code>QUERY_SCHEDULE_EVENTS ()</code></p>
 
 <h2 id='thermostat-proxy-commands-dec_setpoint_heat'>DEC_SETPOINT_HEAT</h2>
 
@@ -3580,24 +3596,8 @@ XML text string of XML that matches the Preset Schedule API.</p>
   <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"fan_mode"</span><span class="err"> </span><span class="n">value</span><span class="o">=</span><span class="s2">"On"</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">preset_fields</span><span class="o">&gt;</span>
 </code></pre></div>
-<h2 id='thermostat-proxy-commands-query_schedule'>QUERY_SCHEDULE</h2>
-<p>Used for the old .ccz and a few older thermostats for scheduling purposes.</p>
-<h3 id='thermostat-proxy-commands-query_schedule-name'>Name</h3>
-
-<p><code>QUERY_SCHEDULE ()</code></p>
-
-<h2 id='thermostat-proxy-commands-query_schedule_events'>QUERY_SCHEDULE_EVENTS</h2>
-
-<p>Used for the old .ccz and a few older thermostats for scheduling purposes.</p>
-
-<h3 id='thermostat-proxy-commands-query_schedule_events-name'>Name</h3>
-
-<p><code>QUERY_SCHEDULE_EVENTS ()</code></p>
-
 <h2 id='thermostat-proxy-commands-set_buttons_lock'>SET_BUTTONS_LOCK</h2>
-
 <p>Used to indicate if the buttons on the thermostat should be locked out from controlling the temperature.</p>
-
 <h3 id='thermostat-proxy-commands-set_buttons_lock-name'>Name</h3>
 
 <p><code>SET_BUTTONS_LOCK ()</code></p>
