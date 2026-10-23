@@ -1027,20 +1027,20 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <tr>
 <td>Enabled</td>
 <td></td>
-<td>True \</td>
-<td>False</td>
+<td>True/False</td>
+<td>Indicates whether or not this entry is initially enabled or not.</td>
 </tr>
 <tr>
 <td>CanChangeName</td>
 <td>4.3.0</td>
-<td>True \</td>
-<td>False</td>
+<td>True/False</td>
+<td>Indicates whether or not this entry name can be changed. This is optional. Default is False.</td>
 </tr>
 <tr>
 <td>CanDelete</td>
 <td>4.3.0</td>
-<td>True \</td>
-<td>False</td>
+<td>True/False</td>
+<td>Indicates whether or not this entry can be deleted. This is optional. Default is False.</td>
 </tr>
 </tbody></table>
 
@@ -1053,9 +1053,8 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
    <span class="nt">&lt;schedule_entry</span> <span class="na">Name=</span><span class="s">&quot;Sleep&quot;</span> <span class="na">Time=</span><span class="s">&quot;1320&quot;</span> <span class="na">Enabled=</span><span class="s">&quot;True&quot;</span> <span class="na">CanChangeName=</span><span class="s">&quot;False&quot;</span> <span class="na">CanDelete=</span><span class="s">&quot;False&quot;</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;schedule_entry</span> <span class="na">Name=</span><span class="s">&quot;Custom 1&quot;</span> <span class="na">Time=</span><span class="s">&quot;1380&quot;</span> <span class="na">Enabled=</span><span class="s">&quot;False&quot;</span> <span class="na">CanChangeName=</span><span class="s">&quot;True&quot;</span> <span class="na">CanDelete=</span><span class="s">&quot;True&quot;</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;schedule_entry</span> <span class="na">Name=</span><span class="s">&quot;Custom 2&quot;</span> <span class="na">Time=</span><span class="s">&quot;1380&quot;</span> <span class="na">Enabled=</span><span class="s">&quot;False&quot;</span> <span class="na">CanChangeName=</span><span class="s">&quot;True&quot;</span> <span class="na">CanDelete=</span><span class="s">&quot;True&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/schedule_day_info&gt;</span></p>
-
-<p></code></pre></div><h4 id='thermostat-capabilities-thermostat-capabilities-lt-setpoint_cool_max-gt-lt-setpoint_cool_max-gt'><code>&lt;setpoint_cool_max&gt;&lt;/setpoint_cool_max&gt;</code></h4>
+<span class="nt">&lt;/schedule_day_info&gt;</span>
+</code></pre></div><h4 id='thermostat-capabilities-thermostat-capabilities-lt-setpoint_cool_max-gt-lt-setpoint_cool_max-gt'><code>&lt;setpoint_cool_max&gt;&lt;/setpoint_cool_max&gt;</code></h4>
 <p>Integer indicating the highest temperature the cool setpoint can be configured as. Default is 89. If used,<code>_f </code>and <code>_c</code> do not need to be set but since this value is Celsius x 10, it will result in a potentially undesired Fahrenheit conversion.  This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 <h4 id='thermostat-capabilities-thermostat-capabilities-lt-setpoint_cool_max_c-gt-lt-setpoint_cool_max_c-gt'><code>&lt;setpoint_cool_max_c&gt;&lt;/setpoint_cool_max_c&gt;</code></h4>
 <p>Integer indicating the highest temperature the cool setpoint can be configured as. Default is 90. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
