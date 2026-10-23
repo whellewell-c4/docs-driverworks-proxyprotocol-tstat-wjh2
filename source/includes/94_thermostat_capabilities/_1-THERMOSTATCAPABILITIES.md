@@ -6,7 +6,7 @@ Note the reference to the [Dynamic Capabilities Changed][1] notification in many
 
 Additionally, please see the Samples folder delivered in this SDK for additional Thermostat (V2) code examples.
 
-### can_calibrate
+### **can_calibrate**
 Indicates if the device is capable of calibrating itself. Enables the `SET_CALIBRATION` command. Valid values: True/False.
 
 
