@@ -821,7 +821,7 @@ Your driver can facilitate communications with multiple types of proxies for a s
 
 <p>Additionally, please see the Samples folder delivered in this SDK for additional Thermostat (V2) code examples.</p>
 
-<h3 id='thermostat-capabilities-thermostat-capabilities-can_calibrate'><strong>can_calibrate</strong></h3>
+<h3 id='thermostat-capabilities-thermostat-capabilities-can_calibrate'>can_calibrate</h3>
 
 <p>Indicates if the device is capable of calibrating itself. Enables the <code>SET_CALIBRATION</code> command. Valid values: True/False.</p>
 
@@ -871,11 +871,11 @@ Your driver can facilitate communications with multiple types of proxies for a s
 
 <h3 id='thermostat-capabilities-thermostat-capabilities-can_preset'>can_preset</h3>
 
-<p>Boolean indicating if the device supports the preset functionality including <code>custom_fields</code>. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstatt"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
+<p>Boolean indicating if the device supports the preset functionality including <code>custom_fields</code>. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 
 <h3 id='thermostat-capabilities-thermostat-capabilities-can_preset_schedule'>can_preset_schedule</h3>
 
-<p>Boolean indicating if the thermostat will support the <code>SET_EVENTS</code> commands for running presets based on scheduling created in Navigators. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstatt"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
+<p>Boolean indicating if the thermostat will support the <code>SET_EVENTS</code> commands for running presets based on scheduling created in Navigators. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 
 <h3 id='thermostat-capabilities-thermostat-capabilities-current_temperature_max_c'>current_temperature_max_c</h3>
 
@@ -944,7 +944,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 
 <h3 id='thermostat-capabilities-thermostat-capabilities-hold_modes'>hold_modes</h3>
 
-<p>This is a comma delimited list of the possible hold modes this thermostat supports. Valid values include: Off, 2 Hours, Until Next, Permanent with no spaces after the commas. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstatt"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
+<p>This is a comma delimited list of the possible hold modes this thermostat supports. Valid values include: Off, 2 Hours, Until Next, Permanent with no spaces after the commas. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 
 <h3 id='thermostat-capabilities-thermostat-capabilities-hold_until_mode'>hold_until_mode</h3>
 
@@ -1094,7 +1094,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <h3 id='thermostat-capabilities-thermostat-capabilities-setpoint_dehumidify_min'>setpoint_dehumidify_min</h3>
 <p>Integer indicating the lowest dehumidify setpoint, default 0.  This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 <h3 id='thermostat-capabilities-thermostat-capabilities-setpoint_humidify_min'>setpoint_humidify_min</h3>
-<p>Integer indicating the lowest humidify setpoint, default 0. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-capabilities-changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
+<p>Integer indicating the lowest humidify setpoint, default 0. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 <h3 id='thermostat-capabilities-thermostat-capabilities-setpoint_humidify_max'>setpoint_humidify_max</h3>
 <p>Integer indicating the highest humidify setpoint, default 100. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 <h3 id='thermostat-capabilities-thermostat-capabilities-setpoint_humidify_resolution'>setpoint_humidify_resolution</h3>
@@ -1110,7 +1110,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <h3 id='thermostat-capabilities-thermostat-capabilities-setpoint_single_min_f'>setpoint_single_min_f</h3>
 <p>Integer indicating the lowest temperature the single setpoint can be configured as. Default is 38. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p>
 <h3 id='thermostat-capabilities-thermostat-capabilities-setpoint_heat_resolution_f'>setpoint_heat_resolution_f</h3>
-<p>Double indicating the incremns hat </p></p>
+<p>Double indicating the increments that the setpoint will follow, such as .2, .5, 1, 2, 5, etc. Default is 1. Note .2 is the lowest F resolution supported. This capability can be changed through a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code> </a> notification.</p></p>
 <h1 id='thermostat-conditionals'>Thermostat Conditionals</h1>
 
 <h2 id='thermostat-conditionals-thermostat-conditionals'>THERMOSTAT CONDITIONALS</h2>
