@@ -193,13 +193,13 @@ An XML block indicating the default schedule for the device.  Legacy scheduling 
 #### `<schedule_entry></schedule_entry>`
 There is one `<schedule_entry>` for each schedule entry during the day. Each entry attribute defines that entry. The following table describes each of the potential attributes. CanChangeName and CanDelete were added in OS Release 4.3.0.
 
-| Attribute     | Version | Value          | Description                                                                                                                                   |
-| ------------- | ------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name          |         | String         | Indicates the name of the entry that will show up in composer and navigator.                                                                  |
-| Time          |         | Number         | Indicates the name of the entry that will show up in composer and navigator. The time units are minutes since midnight, so 360 means 6:00 AM. |
-| Enabled       |         | True \|  False | Indicates whether or not this entry is initially enabled or not.                                                                              |
-| CanChangeName | 4.3.0   | True \|  False | Indicates whether or not this entry name can be changed. This is optional. Default is False.                                                  |
-| CanDelete     | 4.3.0   | True \|  False | Indicates whether or not this entry can be deleted. This is optional. Default is False.                                                       |
+| Attribute     | Version | Value      | Description                                                                                                                                   |
+| ------------- | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name          |         | String     | Indicates the name of the entry that will show up in composer and navigator.                                                                  |
+| Time          |         | Number     | Indicates the name of the entry that will show up in composer and navigator. The time units are minutes since midnight, so 360 means 6:00 AM. |
+| Enabled       |         | True/False | Indicates whether or not this entry is initially enabled or not.                                                                              |
+| CanChangeName | 4.3.0   | True/False | Indicates whether or not this entry name can be changed. This is optional. Default is False.                                                  |
+| CanDelete     | 4.3.0   | True/False | Indicates whether or not this entry can be deleted. This is optional. Default is False.                                                       |
 In the example used here, there are six schedule entries.
 
 ```xml
@@ -211,9 +211,7 @@ In the example used here, there are six schedule entries.
    <schedule_entry Name="Custom 1" Time="1380" Enabled="False" CanChangeName="True" CanDelete="True" />
    <schedule_entry Name="Custom 2" Time="1380" Enabled="False" CanChangeName="True" CanDelete="True" />
 </schedule_day_info>
-
 ```
-
 
 #### `<setpoint_cool_max></setpoint_cool_max>`
 Integer indicating the highest temperature the cool setpoint can be configured as. Default is 89. If used,`_f `and `_c` do not need to be set but since this value is Celsius x 10, it will result in a potentially undesired Fahrenheit conversion.  This capability can be changed through a [`DYNAMIC_CAPABILITIES_CHANGED` ][29] notification.
