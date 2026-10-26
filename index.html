@@ -653,10 +653,19 @@
                     <a href="#thermostat-proxy-commands-dec_setpoint_heat" class="toc-h2 toc-link" data-title="DEC_SETPOINT_HEAT">DEC_SETPOINT_HEAT</a>
                   </li>
                   <li>
+                    <a href="#thermostat-proxy-commands-dec_setpoint_single" class="toc-h2 toc-link" data-title="DEC_SETPOINT_SINGLE">DEC_SETPOINT_SINGLE</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-delete_schedule_entry" class="toc-h2 toc-link" data-title="DELETE_SCHEDULE_ENTRY">DELETE_SCHEDULE_ENTRY</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-proxy-commands-inc_setpoint_cool" class="toc-h2 toc-link" data-title="INC_SETPOINT_COOL">INC_SETPOINT_COOL</a>
                   </li>
                   <li>
                     <a href="#thermostat-proxy-commands-inc_setpoint_heat" class="toc-h2 toc-link" data-title="INC_SETPOINT_HEAT">INC_SETPOINT_HEAT</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-inc_setpoint_single" class="toc-h2 toc-link" data-title="INC_SETPOINT_SINGLE">INC_SETPOINT_SINGLE</a>
                   </li>
                   <li>
                     <a href="#thermostat-proxy-commands-preset_add" class="toc-h2 toc-link" data-title="PRESET_ADD">PRESET_ADD</a>
@@ -677,7 +686,31 @@
                     <a href="#thermostat-proxy-commands-preset_modify" class="toc-h2 toc-link" data-title="PRESET_MODIFY">PRESET_MODIFY</a>
                   </li>
                   <li>
+                    <a href="#thermostat-proxy-commands-preset_rename" class="toc-h2 toc-link" data-title="PRESET_RENAME">PRESET_RENAME</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-restore_schedule_entry" class="toc-h2 toc-link" data-title="RESTORE_SCHEDULE_ENTRY">RESTORE_SCHEDULE_ENTRY</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-proxy-commands-set_buttons_lock" class="toc-h2 toc-link" data-title="SET_BUTTONS_LOCK">SET_BUTTONS_LOCK</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-set_calibration" class="toc-h2 toc-link" data-title="SET_CALIBRATION">SET_CALIBRATION</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-set_setpoint_cool" class="toc-h2 toc-link" data-title="SET_SETPOINT_COOL">SET_SETPOINT_COOL</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-set_setpoint_heat" class="toc-h2 toc-link" data-title="SET_SETPOINT_HEAT">SET_SETPOINT_HEAT</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-set_setpoint_single" class="toc-h2 toc-link" data-title="SET_SETPOINT_SINGLE">SET_SETPOINT_SINGLE</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-set_setpoint_single" class="toc-h2 toc-link" data-title="SET_SETPOINT_SINGLE">SET_SETPOINT_SINGLE</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-proxy-commands-update_schedule_entry_name" class="toc-h2 toc-link" data-title="UPDATE_SCHEDULE_ENTRY_NAME">UPDATE_SCHEDULE_ENTRY_NAME</a>
                   </li>
               </ul>
           </li>
@@ -3256,7 +3289,7 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-dec_setpoint_cool'>DEC_SETPOINT_COOL</h2>
 
-<p>Used to decrease the cool set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_COOL</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
+<p>Decreases the cool setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_COOL</code> command to the protocol driver; otherwise, it handles the decrement locally. If the scale is Fahrenheit, the setpoint is decreased by the value received in the <code>COOL_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>COOL_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_cool-name'>Name</h3>
 
@@ -3265,6 +3298,10 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <h3 id='thermostat-proxy-commands-dec_setpoint_cool-parameter'>Parameter</h3>
 
 <p><code>None</code></p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_cool-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_COOL</code> - sends the new cool setpoint value to the protocol driver.</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_cool-returns'>Returns</h3>
 
@@ -3288,7 +3325,7 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-dec_setpoint_heat'>DEC_SETPOINT_HEAT</h2>
 
-<p>Used to decrease the heat set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_HEAT</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true</p>
+<p>Decreases the heat setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_HEAT</code> command to the protocol driver; otherwise, it handles the decrement locally. If the scale is Fahrenheit, the setpoint is decreased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_heat-name'>Name</h3>
 
@@ -3298,11 +3335,74 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
+<h3 id='thermostat-proxy-commands-dec_setpoint_heat-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_HEAT</code> - sends the new heat setpoint value to the protocol driver.</p>
+
 <h3 id='thermostat-proxy-commands-dec_setpoint_heat-returns'>Returns</h3>
 
 <p><code>None</code></p>
 
+<h2 id='thermostat-proxy-commands-dec_setpoint_single'>DEC_SETPOINT_SINGLE</h2>
+
+<p>Decreases the single setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_SINGLE</code> command to the protocol driver; otherwise, it handles the decrement locally. If the scale is Fahrenheit, the setpoint is decreased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_single-name'>Name</h3>
+
+<p>DEC_SETPOINT_SINGLE ()`</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_single-parameter'>Parameter</h3>
+
+<p><code>None</code></p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_single-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_SINGLE</code> - sends the new heat setpoint value to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_single-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-delete_schedule_entry'>DELETE_SCHEDULE_ENTRY</h2>
+
+<p>Deletes a schedule entry for one day or the full week, depending on whether DAY_INDEX is provided.</p>
+
+<p>Introduced in OS Release 4.3.0.</p>
+
+<h3 id='thermostat-proxy-commands-delete_schedule_entry-name'>Name</h3>
+
+<p><code>DELETE_SCHEDULE_ENTRY ()</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ENTRY_INDEX</td>
+<td>INT</td>
+<td><code>ENTRY_INDEX</code> is the zero-based index of the schedule entry for the selected day. In this implementation, the value is effectively offset by one relative to <code>schedule_entries_per_day</code>: if <code>schedule_entries_per_day</code> is 6, the valid entry indexes are 0 through 6, which represents 7 entries total. This is a legacy quirk of the schedule model, and the default value is 6 unless the default schedule overrides it through the <code>Entries</code> attribute on the <code>schedule_day_info</code> element in the <code>schedule_default</code> capability defined in the driver.xml file.</td>
+</tr>
+<tr>
+<td>DAY_INDEX</td>
+<td>INT</td>
+<td><code>DAY_INDEX</code> is the zero-based index of the day in the weekly schedule. Valid values are 0 through 6, corresponding to the days of the week in the thermostat’s schedule model. This value is used with <code>ENTRY_INDEX</code> to identify the target schedule row: <code>DAY_INDEX</code> selects the day, and <code>ENTRY_INDEX</code> selects the entry within that day. If <code>DAY_INDEX</code> is provided, the command applies only to that day; if it is omitted, the command applies across all days for the selected entry index. The driver validates the value against the schedule’s weekly range and rejects invalid day values.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-delete_schedule_entry-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>DELETE_SCHEDULE_ENTRY</code></p>
+
+<h3 id='thermostat-proxy-commands-delete_schedule_entry-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
 <h2 id='thermostat-proxy-commands-inc_setpoint_cool'>INC_SETPOINT_COOL</h2>
+
+<p>Increases the cool setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>INC_SETPOINT_COOL</code> command to the protocol driver; otherwise, it handles the increment locally. If the scale is Fahrenheit, the setpoint is increased by the value received in the <code>COOL_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>COOL_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
 
 <p>Used to increase the cool set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_COOL</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
 
@@ -3314,11 +3414,17 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
+<h3 id='thermostat-proxy-commands-inc_setpoint_cool-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_COOL</code> - sends the new cool setpoint value to the protocol driver.</p>
+
 <h3 id='thermostat-proxy-commands-inc_setpoint_cool-returns'>Returns</h3>
 
 <p><code>None</code></p>
 
 <h2 id='thermostat-proxy-commands-inc_setpoint_heat'>INC_SETPOINT_HEAT</h2>
+
+<p>Increases the heat setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>INC_SETPOINT_HEAT</code> command to the protocol driver; otherwise, it handles the increment locally. If the scale is Fahrenheit, the setpoint is increased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is increased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
 
 <p>Used to increase the heat set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_HEAT</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
 
@@ -3330,13 +3436,37 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
+<h3 id='thermostat-proxy-commands-inc_setpoint_heat-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_HEAT</code> - sends the new heat setpoint value to the protocol driver.</p>
+
 <h3 id='thermostat-proxy-commands-inc_setpoint_heat-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-inc_setpoint_single'>INC_SETPOINT_SINGLE</h2>
+
+<p>Increases the single setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends an <code>INC_SETPOINT_SINGLE</code> command to the protocol driver; otherwise, it handles the increment locally. If the scale is Fahrenheit, the setpoint is increased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is increased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_single-name'>Name</h3>
+
+<p>INC_SETPOINT_SINGLE ()`</p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_single-parameter'>Parameter</h3>
+
+<p><code>None</code></p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_single-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_SINGLE</code> - sends the new heat setpoint value to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_single-returns'>Returns</h3>
 
 <p><code>None</code></p>
 
 <h2 id='thermostat-proxy-commands-preset_add'>PRESET_ADD</h2>
 
-<p>Adds a new Preset Schedule Preset (If protocol driver has the <code>can_preset_schedule</code> capability)</p>
+<p>Adds a new Preset Schedule Preset (If protocol driver has the <code>can_preset_schedule</code> or <code>can_fixed_schedule_and_presets</code> capability)</p>
 
 <h3 id='thermostat-proxy-commands-preset_add-name'>Name</h3>
 
@@ -3355,25 +3485,33 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <td>Preset Name. Required.</td>
 </tr>
 <tr>
-<td>PRESET FIELDS</td>
+<td>PRESET_FIELDS</td>
 <td>XML</td>
 <td>If a UI or Driver sends a bound call with a string that has invalid XML syntax, this field will be set to <code>&lt;preset_field/&gt;</code> and an error message will be logged to director.log when this occurs. Note that only a driver OR UI should specify the<code> _f or c. </code> For example: <code>heat_setpoint_f</code>, <code>cool_setpoint_f</code>, <code>heat_setpoint_c</code>, <code>cool_setpoint_c</code> but not both. The proxy will auto insert the missing<code> _f or _c </code>based on the scales resolution if it detects one side is not supplied. This makes it so UI&#39;s and drivers do not need to calculate the correct value for the scale.  However, if a driver or UI does want to calculate it, the proxy will leave the value alone. In the same manner the proxy will not correct or anything if the<code> _f and _c </code>do not resolve to the equivalent temperature.</td>
 </tr>
+<tr>
+<td>PRESET_EDIT (new to 4.3.0)</td>
+<td></td>
+<td><code>PRESET_EDIT</code> is an optional parameter that describes how the preset may be edited by the UI or client. It is passed through the proxy and normalized before being stored.<br><br>Allowed values:<br>- <code>all</code> — the preset can be edited in all fields<br>- <code>name</code> — only the preset name may be edited<br>- <code>read_only</code> — the preset is read-only and cannot be edited<br><br>If this parameter is omitted, the proxy defaults to <code>all</code>. The value is not used to change the preset data itself; it is metadata used to control edit permissions and is preserved with the preset definition.</td>
+</tr>
 </tbody></table>
+
+<h3 id='thermostat-proxy-commands-preset_add-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_PRESETS</code> - sends the current preset XML payload to the protocol driver.</p>
 
 <h3 id='thermostat-proxy-commands-preset_add-returns'>Returns</h3>
 
 <p><code>None</code></p>
 
-<h3 id='thermostat-proxy-commands-preset_add-example'>Example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="o">&lt;</span><span class="n">preset_fields</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"heat_setpoint_f"</span> <span class="n">value</span><span class="o">=</span><span class="s2">"65"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"cool_setpoint_f"</span> <span class="n">value</span><span class="o">=</span><span class="s2">"75"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"humidify_setpoint"</span> <span class="n">value</span><span class="o">=</span><span class="s2">"50"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"fan_mode"</span> <span class="n">value</span><span class="o">=</span><span class="s2">"On"</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">preset_fields</span><span class="o">&gt;</span>
-</code></pre></div>
 <h2 id='thermostat-proxy-commands-preset_delete'>PRESET_DELETE</h2>
-<p>Adds a new Preset Schedule Preset (If protocol driver has the <code>can_preset_schedule</code> capability)</p>
+
+<p>Deletes an existing preset. Preset delete is enabled in the UIs if <code>can_preset_schedule</code> or <code>can_fixed_schedule_and_presets</code> capability is enabled. PRESET_ID was introduced in 4.3.0.  Do not use PRESET_ID if the driver supports earlier versions.</p>
+
+<p>The preferred identifier is <code>PRESET_ID</code>; it is used instead of <code>NAME</code> when both are present. <code>PRESET_ID</code> and <code>NAME</code> are mutually exclusive, and the command rejects the request if neither is supplied. </p>
+
+<p>If <code>PRESET_ID</code> is provided, the proxy clears <code>NAME</code> and deletes the matching preset by ID. If <code>PRESET_ID</code> is absent, it deletes the preset matching the provided <code>NAME</code>. This follows the 4.3.0 behavior, where <code>PRESET_ID</code> was added as the preferred parameter for preset deletion.</p>
+
 <h3 id='thermostat-proxy-commands-preset_delete-name'>Name</h3>
 
 <p><code>PRESET_DELETE ()</code></p>
@@ -3388,14 +3526,18 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <tr>
 <td>NAME</td>
 <td>STR</td>
-<td>Preset Name. Required.</td>
+<td>Preset Name. Before 4.3.0 is Required. 4.3.0+ it is Mutually exclusive.</td>
 </tr>
 <tr>
-<td>PRESET FIELDS</td>
-<td>XML</td>
-<td>If a UI or Driver sends a bound call with a string that has invalid XML syntax, this field will be set to <code>&lt;preset_field/&gt;</code> and an error message will be logged to director.log when this occurs. Note that only a driver OR UI should specify the<code> _f or c. </code> For example: <code>heat_setpoint_f</code>, <code>cool_setpoint_f</code>, <code>heat_setpoint_c</code>, <code>cool_setpoint_c</code> but not both. The proxy will auto insert the missing<code> _f or _c </code>based on the scales resolution if it detects one side is not supplied. This makes it so UI&#39;s and drivers do not need to calculate the correct value for the scale.  However, if a driver or UI does want to calculate it, the proxy will leave the value alone. In the same manner the proxy will not correct or anything if the<code> _f and _c </code>do not resolve to the equivalent temperature.</td>
+<td>PRESET_ID (new to 4.3.0)</td>
+<td>INT</td>
+<td>Preset ID. Preferred parameter. Mutually exclusive</td>
 </tr>
 </tbody></table>
+
+<h3 id='thermostat-proxy-commands-preset_delete-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_PRESETS</code> - sends the current preset XML payload to the protocol driver.</p>
 
 <h3 id='thermostat-proxy-commands-preset_delete-returns'>Returns</h3>
 
@@ -3403,7 +3545,7 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-preset_event_add'>PRESET_EVENT_ADD</h2>
 
-<p>Adds a Preset Schedule Preset Event to be run at the specified day/time (If protocol driver has the <code>can_preset_schedule</code> capability.</p>
+<p>Adds a preset schedule event to run at the specified day and time. This command is only valid when the protocol driver supports either the can_preset_schedule capability or the can_fixed_schedule_and_presets capability (4.3.0+).</p>
 
 <h3 id='thermostat-proxy-commands-preset_event_add-name'>Name</h3>
 
@@ -3417,24 +3559,29 @@ XML text string of XML that matches the Preset Schedule API.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>NAME</td>
+<td>PRESET</td>
 <td>STR</td>
-<td>Event Name</td>
+<td>Preset name. Required before 4.3.0. In 4.3.0+, this is mutually exclusive with PRESET_ID.</td>
+</tr>
+<tr>
+<td>PRESET_ID (new to 4.3.0)</td>
+<td>INT</td>
+<td>Preset ID. Added in 4.3.0. Preferred over PRESET when both are present. Mutually exclusive with PRESET.</td>
 </tr>
 <tr>
 <td>WEEKDAY</td>
 <td>INT</td>
-<td>0-6 with Sunday being 0</td>
+<td>Day of the week. Valid range is 0-6, with Sunday = 0.</td>
 </tr>
 <tr>
 <td>HOUR</td>
 <td>INT</td>
-<td>0-23</td>
+<td>Hour of the day. Valid range is 0-23.</td>
 </tr>
 <tr>
 <td>MINUTE</td>
 <td>INT</td>
-<td>0-60</td>
+<td>Minute of the hour. Valid range is 0-59.</td>
 </tr>
 </tbody></table>
 
@@ -3442,13 +3589,17 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
+<h3 id='thermostat-proxy-commands-preset_event_add-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_PRESETS</code> — sends the current preset XML payload to the protocol driver.</p>
+
 <h3 id='thermostat-proxy-commands-preset_event_add-usage-note'>Usage Note</h3>
 
 <p>Adding an event at the same time as a different preset event will result in the different preset event being deleted and the new one being put in at that time.</p>
 
 <h2 id='thermostat-proxy-commands-preset_event_delete'>PRESET_EVENT_DELETE</h2>
 
-<p>Deletes a Preset Schedule Preset if the protocol driver has the <code>can_preset_schedule</code> capability.</p>
+<p>Deletes a Preset Schedule Preset. This command is only valid when the protocol driver supports either the can_preset_schedule capability or the can_fixed_schedule_and_presets capability (4.3.0+).</p>
 
 <h3 id='thermostat-proxy-commands-preset_event_delete-name'>Name</h3>
 
@@ -3462,24 +3613,29 @@ XML text string of XML that matches the Preset Schedule API.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>NAME</td>
+<td>PRESET</td>
 <td>STR</td>
-<td>Using <code>&quot;&quot;</code> (an empty string) will match all presets to make deleting all events of a given preset name easier.</td>
+<td>Preset name. Required before 4.3.0. In 4.3.0+, this is mutually exclusive with PRESET_ID.</td>
+</tr>
+<tr>
+<td>PRESET_ID (new to 4.3.0)</td>
+<td>INT</td>
+<td>Preset ID. Added in 4.3.0. Preferred over PRESET when both are present. Mutually exclusive with PRESET.</td>
 </tr>
 <tr>
 <td>WEEKDAY</td>
 <td>INT</td>
-<td>0-6 with Sunday being 0. Using -1 will match any weekday.</td>
+<td>Day of the week. Valid range is 0-6, with Sunday = 0. Using -1 will match any weekday.</td>
 </tr>
 <tr>
 <td>HOUR</td>
 <td>INT</td>
-<td>0-23 Using -1 Will match any Hour.</td>
+<td>Hour of the day. Valid range is 0-23. Using -1 Will match any Hour.</td>
 </tr>
 <tr>
 <td>MINUTE</td>
 <td>INT</td>
-<td>0-60 Using -1 will match any Minute.</td>
+<td>Minute of the hour. Valid range is 0-59. Using -1 will match any Minute.</td>
 </tr>
 </tbody></table>
 
@@ -3487,15 +3643,13 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
-<h3 id='thermostat-proxy-commands-preset_event_delete-usage-note'>Usage Note</h3>
+<h3 id='thermostat-proxy-commands-preset_event_delete-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p>Usage Note:</p>
-
-<p>Using <code>&quot;&quot;</code> for the Preset or -1 for the weekday, hour or minute might be useful for UI&#39;s, Agents or Protocol Drivers as when a matching parameter is used you can delete multiple events at once AND only one Notify of the changes that were made are sent rather than causing a notify for each and every modification if they were done one at a time.</p>
+<p><code>SET_PRESETS</code> — sends the current preset XML payload to the protocol driver.</p>
 
 <h2 id='thermostat-proxy-commands-preset_event_modify'>PRESET_EVENT_MODIFY</h2>
 
-<p>Modifies an existing Preset Schedule Event (If protocol driver has the <code>can_preset_schedule</code> capability)</p>
+<p>Modifies an existing Preset Schedule Event. This command is only valid when the protocol driver supports either the can_preset_schedule capability or the can_fixed_schedule_and_presets capability (4.3.0+).</p>
 
 <h3 id='thermostat-proxy-commands-preset_event_modify-name'>Name</h3>
 
@@ -3509,14 +3663,19 @@ XML text string of XML that matches the Preset Schedule API.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>NAME</td>
+<td>PRESET</td>
 <td>STR</td>
 <td>Event Name</td>
 </tr>
 <tr>
+<td>PRESET_ID (new to 4.3.0)</td>
+<td>INT</td>
+<td>Preset ID. Added in 4.3.0. Preferred over PRESET when both are present. Mutually exclusive with PRESET.</td>
+</tr>
+<tr>
 <td>WEEKDAY:</td>
 <td>INT</td>
-<td>0-6 with Sunday being 0.</td>
+<td>Day of the week. Valid range is 0-6, with Sunday = 0.</td>
 </tr>
 <tr>
 <td>HOUR</td>
@@ -3531,17 +3690,17 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <tr>
 <td>NEW WEEKDAY</td>
 <td>INT</td>
-<td>0-6 with Sunday being 0</td>
+<td>New day of the week. Valid range is 0-6, with Sunday = 0</td>
 </tr>
 <tr>
 <td>NEW HOUR</td>
 <td>INT</td>
-<td>0-23</td>
+<td>New hour of the day. Valid range is 0-23.</td>
 </tr>
 <tr>
 <td>NEW MINUTE</td>
 <td>INT</td>
-<td>0-60</td>
+<td>New minute of the hour. Valid range is 0-59.</td>
 </tr>
 </tbody></table>
 
@@ -3549,13 +3708,17 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
+<h3 id='thermostat-proxy-commands-preset_event_modify-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_PRESETS</code> — sends the current preset XML payload to the protocol driver.</p>
+
 <h3 id='thermostat-proxy-commands-preset_event_modify-usage-note'>Usage Note</h3>
 
 <p>Modifying an event to the same time as a different preset event will result in the different preset event being deleted and the new one being put in at that time.</p>
 
 <h2 id='thermostat-proxy-commands-preset_modify'>PRESET_MODIFY</h2>
 
-<p>Modifies an existing Preset Schedule Event (If protocol driver has the <code>can_preset_schedule</code> capability)</p>
+<p>Modifies an existing Preset Schedule Event. This command is only valid when the protocol driver supports either the can_preset_schedule capability or the can_fixed_schedule_and_presets capability (4.3.0+).</p>
 
 <h3 id='thermostat-proxy-commands-preset_modify-name'>Name</h3>
 
@@ -3571,15 +3734,20 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <tr>
 <td>NAME</td>
 <td>STR</td>
-<td>Preset Name</td>
+<td>Preset Name. In 4.3.0+, this is mutually exclusive with PRESET_ID.</td>
 </tr>
 <tr>
-<td>PRESET FIELDS</td>
+<td>PRESET_ID (new to 4.3.0)</td>
+<td>INT</td>
+<td>Preset ID. Added in 4.3.0. Preferred over PRESET when both are present. Mutually exclusive with PRESET.</td>
+</tr>
+<tr>
+<td>PRESET_FIELDS</td>
 <td>XML</td>
 <td>XML DATA</td>
 </tr>
 <tr>
-<td>NEW NAME</td>
+<td>NEW_NAME</td>
 <td>STR</td>
 <td>New Preset Name</td>
 </tr>
@@ -3589,6 +3757,10 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>None</code></p>
 
+<h3 id='thermostat-proxy-commands-preset_modify-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_PRESETS</code> — sends the current preset XML payload to the protocol driver.</p>
+
 <h3 id='thermostat-proxy-commands-preset_modify-example'>Example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="o">&lt;</span><span class="n">preset_fields</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"heat_setpoint_f"</span><span class="err"> </span><span class="n">value</span><span class="o">=</span><span class="s2">"65"</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"cool_setpoint_f"</span><span class="err"> </span><span class="n">value</span><span class="o">=</span><span class="s2">"75"</span><span class="o">&gt;</span>
@@ -3596,8 +3768,110 @@ XML text string of XML that matches the Preset Schedule API.</p>
   <span class="o">&lt;</span><span class="n">field</span> <span class="n">id</span><span class="o">=</span><span class="s2">"fan_mode"</span><span class="err"> </span><span class="n">value</span><span class="o">=</span><span class="s2">"On"</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">preset_fields</span><span class="o">&gt;</span>
 </code></pre></div>
+<h2 id='thermostat-proxy-commands-preset_rename'>PRESET_RENAME</h2>
+<p>Renames an existing preset by its <code>PRESET_ID</code>. This command was added in 4.3.0.</p>
+<h3 id='thermostat-proxy-commands-preset_rename-name'>Name</h3>
+
+<p><code>PRESET_RENAME ()</code></p>
+
+<h3 id='thermostat-proxy-commands-preset_rename-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>PRESET_ID</code></td>
+<td>INT</td>
+<td>Required. The identifier of the preset to rename.</td>
+</tr>
+<tr>
+<td><code>NEW_NAME</code></td>
+<td>STR</td>
+<td>Required. The new preset name. Must be a valid preset name and may not contain a comma.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-preset_rename-notes'>Notes</h3>
+
+<ul>
+<li><code>PRESET_RENAME</code> is the 4.3.0 replacement for rename operations that previously relied on name-based matching.</li>
+<li>The preset is resolved by <code>PRESET_ID</code>; a name is not used for lookup.</li>
+<li>The new name must be valid and unique among existing presets.</li>
+<li>If the rename succeeds, the proxy updates the preset definition and updates any scheduled preset events that reference the renamed preset.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-preset_rename-proxy-behavior-after-completion'>Proxy behavior after completion</h3>
+
+<p>After a successful rename, the proxy updates the preset state, refreshes the preset list shown to the UI, and sends the updated preset data to the protocol driver as needed. Any preset event entries associated with that preset are also updated so the scheduler continues to reference the current preset name.</p>
+
+<h3 id='thermostat-proxy-commands-preset_rename-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_PRESETS</code> - sends the updated preset XML payload to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-preset_rename-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-restore_schedule_entry'>RESTORE_SCHEDULE_ENTRY</h2>
+
+<p>Restores a previously deleted schedule entry. This command was added in 4.3.0.</p>
+
+<h3 id='thermostat-proxy-commands-restore_schedule_entry-name'>Name</h3>
+
+<p><code>RESTORE_SCHEDULE_ENTRY ()</code></p>
+
+<h3 id='thermostat-proxy-commands-restore_schedule_entry-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ENTRY_INDEX</code></td>
+<td>INT</td>
+<td>Required. The schedule entry index to restore.</td>
+</tr>
+<tr>
+<td><code>DAY_INDEX</code></td>
+<td>INT</td>
+<td>Optional. If supplied, only the specified day is restored. If omitted, the restore applies across all days for that entry index.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-restore_schedule_entry-notes'>Notes</h3>
+
+<ul>
+<li><code>ENTRY_INDEX</code> is zero-based and refers to the schedule entry within the selected day.</li>
+<li><code>DAY_INDEX</code> is zero-based and valid from 0 to 6. 0 = Sunday.</li>
+<li>If <code>DAY_INDEX</code> is omitted, the command attempts to restore the deleted entry on all days at that entry index.</li>
+<li>The command only restores entries that are currently marked as deleted.</li>
+<li>If no matching deleted entry is found, the restore request is ignored.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-restore_schedule_entry-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>RESTORE_SCHEDULE_ENTRY</code> - sends the restore operation to the protocol driver with the relevant <code>DAY_INDEX</code> and <code>ENTRY_INDEX</code> values.</p>
+
+<h3 id='thermostat-proxy-commands-restore_schedule_entry-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
 <h2 id='thermostat-proxy-commands-set_buttons_lock'>SET_BUTTONS_LOCK</h2>
+
 <p>Used to indicate if the buttons on the thermostat should be locked out from controlling the temperature.</p>
+
 <h3 id='thermostat-proxy-commands-set_buttons_lock-name'>Name</h3>
 
 <p><code>SET_BUTTONS_LOCK ()</code></p>
@@ -3615,6 +3889,296 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <td>1 or 0 indicating if the buttons should be locked out or not.</td>
 </tr>
 </tbody></table>
+
+<h2 id='thermostat-proxy-commands-set_calibration'>SET_CALIBRATION</h2><h3 id='thermostat-proxy-commands-set_calibration-name'>Name</h3>
+<p><code>SET_CALIBRATION ()</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>CALIBRATION</code></td>
+<td>INT</td>
+<td>Required. The calibration value to apply.</td>
+</tr>
+</tbody></table>
+<h3 id='thermostat-proxy-commands-set_calibration-notes'>Notes</h3>
+<ul>
+<li>This command is only valid when the thermostat supports calibration.</li>
+<li>The proxy updates the in-memory calibration value and forwards the value to the protocol driver using the thermostat’s native command format.</li>
+<li>Calibration is a driver/hardware-level adjustment and is not a UI-only setting.</li>
+</ul>
+<h3 id='thermostat-proxy-commands-set_calibration-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+<p><code>SET_CALIBRATION</code> - sends the calibration value to the protocol driver.</p>
+<h3 id='thermostat-proxy-commands-set_calibration-returns'>Returns</h3>
+<p><code>None</code></p>
+
+<h3 id='thermostat-proxy-commands-set_calibration-name'>Name</h3>
+<p><code>SET_LOCK_SCREEN_MODE ()</code></p>
+<h3 id='thermostat-proxy-commands-set_calibration-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MODE</code></td>
+<td>STR</td>
+<td>Required. The lock screen mode to apply.</td>
+</tr>
+</tbody></table>
+<h3 id='thermostat-proxy-commands-set_calibration-notes'>Notes</h3>
+<ul>
+<li>This command is new in 4.3.0.</li>
+<li>The valid values for <code>MODE</code> are defined by the thermostat capability <code>lock_screen_modes</code>.
+
+<ul>
+<li>Example:
+<code>xml
+&lt;lock_screen_modes&gt;Unlocked,Partially Locked,Fully Locked&lt;/lock_screen_modes&gt;
+</code></li>
+</ul></li>
+<li>The value passed to the command must match one of the supported lock screen modes reported by the thermostat.</li>
+</ul>
+<h3 id='thermostat-proxy-commands-set_calibration-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+<p><code>SET_LOCK_SCREEN_MODE</code> - sends the mode value to the protocol driver.</p>
+<h3 id='thermostat-proxy-commands-set_calibration-returns'>Returns</h3>
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-set_setpoint_cool'>SET_SETPOINT_COOL</h2>
+
+<p>Sets the cool setpoint.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_cool-name'>Name</h3>
+
+<p><code>SET_SETPOINT_COOL ()</code></p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_cool-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>FAHRENHEIT</code></td>
+<td>LEVEL</td>
+<td>Optional. Cool setpoint in Fahrenheit.</td>
+</tr>
+<tr>
+<td><code>CELSIUS</code></td>
+<td>LEVEL</td>
+<td>Optional. Cool setpoint in Celsius.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_cool-notes'>Notes</h3>
+
+<ul>
+<li>At least one temperature parameter must be supplied.</li>
+<li>The proxy clamps the requested value to the thermostat’s supported cool setpoint range and resolution.</li>
+<li>If the thermostat supports both Fahrenheit and Celsius, the proxy accepts whichever scale is provided and converts as needed.</li>
+<li>For this command, the proxy updates the current cool setpoint and sends the corresponding protocol-driver command.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_cool-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_COOL</code> - sends the cool setpoint value to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_cool-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-set_setpoint_heat'>SET_SETPOINT_HEAT</h2>
+
+<p>Sets the heat setpoint.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_heat-name'>Name</h3>
+
+<p><code>SET_SETPOINT_HEAT ()</code></p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_heat-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>FAHRENHEIT</code></td>
+<td>LEVEL</td>
+<td>Optional. Heat setpoint in Fahrenheit.</td>
+</tr>
+<tr>
+<td><code>CELSIUS</code></td>
+<td>LEVEL</td>
+<td>Optional. Heat setpoint in Celsius.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_heat-notes'>Notes</h3>
+
+<ul>
+<li>At least one temperature parameter must be supplied.</li>
+<li>The proxy clamps the requested value to the thermostat’s supported heat setpoint range and resolution.</li>
+<li>If the thermostat supports both Fahrenheit and Celsius, the proxy accepts whichever scale is provided and converts as needed.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_heat-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_HEAT</code> - sends the heat setpoint value to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_heat-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-set_setpoint_single'>SET_SETPOINT_SINGLE</h2>
+
+<p>Sets the single setpoint.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-name'>Name</h3>
+
+<p><code>SET_SETPOINT_SINGLE ()</code></p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>FAHRENHEIT</code></td>
+<td>LEVEL</td>
+<td>Optional. Single setpoint in Fahrenheit.</td>
+</tr>
+<tr>
+<td><code>CELSIUS</code></td>
+<td>LEVEL</td>
+<td>Optional. Single setpoint in Celsius.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-notes'>Notes</h3>
+
+<ul>
+<li>At least one temperature parameter must be supplied.</li>
+<li>The proxy clamps the requested value to the thermostat’s supported single-setpoint range and resolution.</li>
+<li>If the thermostat supports both Fahrenheit and Celsius, the proxy accepts whichever scale is provided and converts as needed.</li>
+<li>This command is used for thermostats that expose a single active setpoint rather than separate heat/cool setpoints.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_SINGLE</code> - sends the single setpoint value to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-set_setpoint_single'>SET_SETPOINT_SINGLE</h2>
+
+<p>Sets the single setpoint.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-name'>Name</h3>
+
+<p>SET_SETPOINT_SINGLE ()</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>FAHRENHEIT</code></td>
+<td>LEVEL</td>
+<td>Optional. Single setpoint in Fahrenheit.</td>
+</tr>
+<tr>
+<td><code>CELSIUS</code></td>
+<td>LEVEL</td>
+<td>Optional. Single setpoint in Celsius.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-notes'>Notes</h3>
+
+<ul>
+<li>At least one temperature parameter must be supplied.</li>
+<li>The proxy clamps the requested value to the thermostat’s supported single-setpoint range and resolution.</li>
+<li>If the thermostat supports both Fahrenheit and Celsius, the proxy accepts whichever scale is provided and converts as needed.</li>
+<li>This command is used for thermostats that expose a single active setpoint rather than separate heat/cool setpoints.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
+
+<p><code>SET_SETPOINT_SINGLE</code> - sends the single setpoint value to the protocol driver.</p>
+
+<h3 id='thermostat-proxy-commands-set_setpoint_single-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-proxy-commands-update_schedule_entry_name'>UPDATE_SCHEDULE_ENTRY_NAME</h2>
+
+<p>New in 4.3.0.</p>
+
+<h3 id='thermostat-proxy-commands-update_schedule_entry_name-parameters'>Parameters</h3>
+
+<ul>
+<li><code>ENTRY_INDEX</code> — required; zero-based index of the schedule entry within each day.</li>
+<li><code>NEW_NAME</code> — required; the replacement name to apply to the entry.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-update_schedule_entry_name-notes'>Notes</h3>
+
+<ul>
+<li>This command applies to all days in the week at the specified <code>ENTRY_INDEX</code>.</li>
+<li>It does not use <code>DAY_INDEX</code>; the proxy loops through every day and updates each matching entry.</li>
+<li>The target index must be valid for the thermostat’s <code>GetEntriesPerDay()</code> range.</li>
+<li>Before renaming any day, the proxy validates every day in the week. If any entry at that index is not re-nameable, the command is rejected and no rename is applied.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-update_schedule_entry_name-proxy-behavior-after-completion'>Proxy behavior after completion</h3>
+
+<ul>
+<li>The proxy checks that the schedule exists and that <code>ENTRY_INDEX</code> is in range.</li>
+<li>It verifies that <code>NEW_NAME</code> is present.</li>
+<li>It then loops through all 7 days and calls <code>SetEntryName(newName)</code> on each matching entry that is allowed to be renamed.</li>
+<li>For each day, it sends the update to the protocol driver using the per-day <code>DAY_INDEX</code>, <code>ENTRY_INDEX</code>, and <code>ENTRY_NAME</code> values.</li>
+</ul>
+
+<h3 id='thermostat-proxy-commands-update_schedule_entry_name-command-sent-to-the-protocol-driver'>Command sent to the protocol driver</h3>
+
+<ul>
+<li><code>UPDATE_SCHEDULE_ENTRY_NAME</code></li>
+<li>Payload includes:
+
+<ul>
+<li><code>DAY_INDEX</code></li>
+<li><code>ENTRY_INDEX</code></li>
+<li><code>ENTRY_NAME</code></li>
+</ul></li>
+</ul>
+
+<p>This is sent once per affected day, not as a single all-days command. </p>
+
+<h3 id='thermostat-proxy-commands-update_schedule_entry_name-returns'>Returns</h3>
+
+<p><code>None</code></p>
 <h1 id='thermostat-unhandled-commands'>Thermostat Unhandled Commands</h1>
 
 <h2 id='thermostat-unhandled-commands-unhandled-commands'>Unhandled Commands</h2>
