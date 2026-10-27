@@ -653,6 +653,9 @@
                     <a href="#thermostat-proxy-commands-delete_schedule_entry" class="toc-h2 toc-link" data-title="DELETE_SCHEDULE_ENTRY">DELETE_SCHEDULE_ENTRY</a>
                   </li>
                   <li>
+                    <a href="#thermostat-proxy-commands-notification" class="toc-h2 toc-link" data-title="Notification">Notification</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-proxy-commands-inc_setpoint_cool" class="toc-h2 toc-link" data-title="INC_SETPOINT_COOL">INC_SETPOINT_COOL</a>
                   </li>
                   <li>
@@ -709,10 +712,10 @@
               </ul>
           </li>
           <li>
-            <a href="#thermostat-unhandled-commands" class="toc-h1 toc-link" data-title="Thermostat Unhandled Commands">Thermostat Unhandled Commands</a>
+            <a href="#thermostat-commands-not-handled-by-the-proxy" class="toc-h1 toc-link" data-title="Thermostat Commands not Handled by the Proxy">Thermostat Commands not Handled by the Proxy</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#thermostat-unhandled-commands-unhandled-commands" class="toc-h2 toc-link" data-title="Unhandled Commands">Unhandled Commands</a>
+                    <a href="#thermostat-commands-not-handled-by-the-proxy-commands-not-handled-by-the-proxy" class="toc-h2 toc-link" data-title="Commands Not Handled by the Proxy">Commands Not Handled by the Proxy</a>
                   </li>
               </ul>
           </li>
@@ -3283,7 +3286,13 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-dec_setpoint_cool'>DEC_SETPOINT_COOL</h2>
 
-<p>Decreases the cool setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_COOL</code> command to the protocol driver; otherwise, it handles the decrement locally. If the scale is Fahrenheit, the setpoint is decreased by the value received in the <code>COOL_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>COOL_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+<p>Decreases the cool setpoint. This command is handled by the proxy.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_COOL</code> command to the protocol driver.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is false, the proxy calculates the new cool setpoint locally based on the configured resolution and then sends a <code>SET_SETPOINT_COOL</code> command to the protocol driver with the updated value.</p>
+
+<p>When the thermostat is in Fahrenheit mode, the decrement is based on <code>COOL_SETPOINT_RESOLUTION_F</code> (typically 1). When it is in Celsius mode, the decrement is based on <code>COOL_SETPOINT_RESOLUTION_C</code> (typically 1).</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_cool-name'>Name</h3>
 
@@ -3295,7 +3304,24 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_cool-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p><code>SET_SETPOINT_COOL</code> - sends the new cool setpoint value to the protocol driver.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true: <code>DEC_SETPOINT_COOL</code>
+If <code>can_inc_dec_setpoints</code> is false: <code>SET_SETPOINT_COOL</code> with the calculated new setpoint value</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_cool-notification'>Notification</h3>
+
+<p>When the thermostat actually changes the cool setpoint, the protocol driver should send back a notification in the form:</p>
+
+<ul>
+<li><code>COOL_SETPOINT_CHANGED</code></li>
+<li>Parameters:
+
+<ul>
+<li><code>SETPOINT</code></li>
+<li><code>SCALE</code></li>
+</ul></li>
+</ul>
+
+<p>See the cool setpoint notification documentation for the exact parameter details and valid values.</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_cool-returns'>Returns</h3>
 
@@ -3303,7 +3329,13 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-dec_setpoint_heat'>DEC_SETPOINT_HEAT</h2>
 
-<p>Decreases the heat setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_HEAT</code> command to the protocol driver; otherwise, it handles the decrement locally. If the scale is Fahrenheit, the setpoint is decreased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+<p>Decreases the heat setpoint. This command is handled by the proxy.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is true, the proxy sends an <code>DEC_SETPOINT_HEAT</code> command to the protocol driver. </p>
+
+<p>If <code>can_inc_dec_setpoints</code> is false, the proxy calculates the new heat setpoint locally based on the configured resolution and then sends a <code>SET_SETPOINT_HEAT</code> command to the protocol driver with the updated value.</p>
+
+<p>When the thermostat is in Fahrenheit mode, the setpoint is increased by the value in <code>HEAT_SETPOINT_RESOLUTION_F</code> (typically 1). When it is in Celsius mode, it is increased by the value in <code>HEAT_SETPOINT_RESOLUTION_C</code> (typically 1).</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_heat-name'>Name</h3>
 
@@ -3315,7 +3347,22 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_heat-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p><code>SET_SETPOINT_HEAT</code> - sends the new heat setpoint value to the protocol driver.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true: <code>DEC_SETPOINT_HEAT</code>
+If <code>can_inc_dec_setpoints</code> is false: <code>SET_SETPOINT_HEAT</code> with the calculated new setpoint value</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_heat-notification'>Notification</h3>
+
+<p>When the thermostat actually changes the heat setpoint, the protocol driver should send back a notification in the form:</p>
+
+<ul>
+<li><code>HEAT_SETPOINT_CHANGED</code></li>
+<li>Parameters:
+
+<ul>
+<li><code>SETPOINT</code></li>
+<li><code>SCALE</code></li>
+</ul></li>
+</ul>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_heat-returns'>Returns</h3>
 
@@ -3323,11 +3370,17 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-dec_setpoint_single'>DEC_SETPOINT_SINGLE</h2>
 
-<p>Decreases the single setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_SINGLE</code> command to the protocol driver; otherwise, it handles the decrement locally. If the scale is Fahrenheit, the setpoint is decreased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+<p>Decreases the single setpoint. This command is handled by the proxy.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>DEC_SETPOINT_SINGLE</code> command to the protocol driver. </p>
+
+<p>If <code>can_inc_dec_setpoints</code> is false, he proxy calculates the new setpoint locally based on the configured resolution and then sends a <code>SET_SETPOINT_SINGLE</code> command to the protocol driver with the updated setpoint value.</p>
+
+<p>When the thermostat is in Fahrenheit mode, the decrement is based on <code>SINGLE_SETPOINT_RESOLUTION_F</code> (typically 1). When it is in Celsius mode, the decrement is based on <code>SINGLE_SETPOINT_RESOLUTION_C</code> (typically 1).</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_single-name'>Name</h3>
 
-<p>DEC_SETPOINT_SINGLE ()`</p>
+<p><code>DEC_SETPOINT_SINGLE ()</code></p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_single-parameter'>Parameter</h3>
 
@@ -3335,7 +3388,24 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_single-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p><code>SET_SETPOINT_SINGLE</code> - sends the new heat setpoint value to the protocol driver.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true: <code>DEC_SETPOINT_SINGLE</code>
+If <code>can_inc_dec_setpoints</code> is false: <code>SET_SETPOINT_SINGLE</code> with the calculated new setpoint value</p>
+
+<h3 id='thermostat-proxy-commands-dec_setpoint_single-notification'>Notification</h3>
+
+<p>When the thermostat actually changes the setpoint, the protocol driver should send back a notification in the form:</p>
+
+<ul>
+<li><code>SETPOINT_CHANGED</code></li>
+<li>Parameters:
+
+<ul>
+<li><code>SETPOINT</code></li>
+<li><code>SCALE</code></li>
+</ul></li>
+</ul>
+
+<p>See the thermostat setpoint notification documentation for the exact parameter details and valid values.</p>
 
 <h3 id='thermostat-proxy-commands-dec_setpoint_single-returns'>Returns</h3>
 
@@ -3374,15 +3444,32 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <p><code>DELETE_SCHEDULE_ENTRY</code></p>
 
-<h3 id='thermostat-proxy-commands-delete_schedule_entry-returns'>Returns</h3>
+<h2 id='thermostat-proxy-commands-notification'>Notification</h2>
+
+<p><code>SCHEDULE_ENTRY_DELETED</code></p>
+
+<p>Parameters:</p>
+
+<ul>
+<li><code>EntryIndex</code></li>
+<li><code>DayIndex</code> (optional, included when the command applies to a specific day)</li>
+</ul>
+
+<p>This notification is sent when a schedule entry is deleted. If the delete is scoped to a single day, both <code>EntryIndex</code> and <code>DayIndex</code> are included. If the delete applies across all days, the notification may include only <code>EntryIndex</code>.</p>
+
+<h3 id='thermostat-proxy-commands-notification-returns'>Returns</h3>
 
 <p><code>None</code></p>
 
 <h2 id='thermostat-proxy-commands-inc_setpoint_cool'>INC_SETPOINT_COOL</h2>
 
-<p>Increases the cool setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>INC_SETPOINT_COOL</code> command to the protocol driver; otherwise, it handles the increment locally. If the scale is Fahrenheit, the setpoint is increased by the value received in the <code>COOL_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is decreased by the value received in the <code>COOL_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+<p>Increases the cool setpoint. This command is handled by the proxy.</p>
 
-<p>Used to increase the cool set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_COOL</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true, the proxy sends an <code>INC_SETPOINT_COOL</code> command to the protocol driver. </p>
+
+<p>If <code>can_inc_dec_setpoints</code> is false, the proxy calculates the new cool setpoint locally based on the configured resolution and then sends a <code>SET_SETPOINT_COOL</code> command to the protocol driver with the updated value.</p>
+
+<p>When the thermostat is in Fahrenheit mode, the increment is based on <code>COOL_SETPOINT_RESOLUTION_F</code> (typically 1). When it is in Celsius mode, the increment is based on <code>COOL_SETPOINT_RESOLUTION_C</code> (typically 1).</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_cool-name'>Name</h3>
 
@@ -3394,7 +3481,24 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_cool-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p><code>SET_SETPOINT_COOL</code> - sends the new cool setpoint value to the protocol driver.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true: <code>INC_SETPOINT_COOL</code>
+If <code>can_inc_dec_setpoints</code> is false: <code>SET_SETPOINT_COOL</code> with the calculated new setpoint value</p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_cool-notification'>Notification</h3>
+
+<p>When the thermostat actually changes the cool setpoint, the protocol driver should send back a notification in the form:</p>
+
+<ul>
+<li><code>COOL_SETPOINT_CHANGED</code></li>
+<li>Parameters:
+
+<ul>
+<li><code>SETPOINT</code></li>
+<li><code>SCALE</code></li>
+</ul></li>
+</ul>
+
+<p>See the <code>COOL_SETPOINT_CHANGED</code> notification documentation for the exact parameter details and valid values.</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_cool-returns'>Returns</h3>
 
@@ -3402,9 +3506,13 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-inc_setpoint_heat'>INC_SETPOINT_HEAT</h2>
 
-<p>Increases the heat setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends a <code>INC_SETPOINT_HEAT</code> command to the protocol driver; otherwise, it handles the increment locally. If the scale is Fahrenheit, the setpoint is increased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is increased by the value received in the <code>HEAT_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+<p>Increases the heat setpoint. This command is handled by the proxy.</p>
 
-<p>Used to increase the heat set point by 1. This command is handled by the proxy, and ends up creating a <code>SET_SETPOINT_HEAT</code> command to send to the protocol driver, unless the capability <code>can_inc_dec_setpoints</code> is set to true.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true, the proxy sends an <code>INC_SETPOINT_HEAT</code> command to the protocol driver.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is false, the proxy calculates the new heat setpoint locally based on the configured resolution and then sends a <code>SET_SETPOINT_HEAT</code> command to the protocol driver with the updated value.</p>
+
+<p>When the thermostat is in Fahrenheit mode, the setpoint is increased by the value in <code>HEAT_SETPOINT_RESOLUTION_F</code> (typically 1). When it is in Celsius mode, it is increased by the value in <code>HEAT_SETPOINT_RESOLUTION_C</code> (typically 1).</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_heat-name'>Name</h3>
 
@@ -3416,7 +3524,24 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_heat-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p><code>SET_SETPOINT_HEAT</code> - sends the new heat setpoint value to the protocol driver.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true:  <code>INC_SETPOINT_HEAT</code>
+If <code>can_inc_dec_setpoints</code> is false: <code>SET_SETPOINT_HEAT</code> with the calculated new setpoint value</p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_heat-notification'>Notification</h3>
+
+<p>When the thermostat actually changes the heat setpoint, the protocol driver should send back a notification in the form:</p>
+
+<ul>
+<li><code>HEAT_SETPOINT_CHANGED</code></li>
+<li>Parameters:
+
+<ul>
+<li><code>SETPOINT</code></li>
+<li><code>SCALE</code></li>
+</ul></li>
+</ul>
+
+<p>See the <code>HEAT_SETPOINT_CHANGED</code> notification documentation for the exact parameter details and valid values.</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_heat-returns'>Returns</h3>
 
@@ -3424,11 +3549,17 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-proxy-commands-inc_setpoint_single'>INC_SETPOINT_SINGLE</h2>
 
-<p>Increases the single setpoint. This command is handled by the proxy. If <code>can_inc_dec_setpoints</code> is true, the proxy sends an <code>INC_SETPOINT_SINGLE</code> command to the protocol driver; otherwise, it handles the increment locally. If the scale is Fahrenheit, the setpoint is increased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_F</code> notification (default: 1). If the scale is Celsius, it is increased by the value received in the <code>SINGLE_SETPOINT_RESOLUTION_C</code> notification (default: 1).</p>
+<p>Increases the single setpoint. This command is handled by the proxy.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is true, the proxy sends an <code>INC_SETPOINT_SINGLE</code> command to the protocol driver.</p>
+
+<p>If <code>can_inc_dec_setpoints</code> is false, the proxy calculates the new setpoint locally based on the configured resolution and then sends a <code>SET_SETPOINT_SINGLE</code> command to the protocol driver with the updated setpoint value.</p>
+
+<p>When the thermostat is in Fahrenheit mode, the increment is based on <code>SINGLE_SETPOINT_RESOLUTION_F</code> (typically 1). When it is in Celsius mode, the increment is based on <code>SINGLE_SETPOINT_RESOLUTION_C</code> (typically 1).</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_single-name'>Name</h3>
 
-<p>INC_SETPOINT_SINGLE ()`</p>
+<p><code>INC_SETPOINT_SINGLE ()</code></p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_single-parameter'>Parameter</h3>
 
@@ -3436,7 +3567,24 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_single-command-sent-to-protocol-driver'>Command Sent to Protocol Driver</h3>
 
-<p><code>SET_SETPOINT_SINGLE</code> - sends the new heat setpoint value to the protocol driver.</p>
+<p>If <code>can_inc_dec_setpoints</code> is true: <code>INC_SETPOINT_SINGLE</code>
+If <code>can_inc_dec_setpoints</code> is false: <code>SET_SETPOINT_SINGLE</code> with the calculated new setpoint value</p>
+
+<h3 id='thermostat-proxy-commands-inc_setpoint_single-notification'>Notification</h3>
+
+<p>When the thermostat actually changes the setpoint, the protocol driver should send back a notification in the form:</p>
+
+<ul>
+<li><code>SETPOINT_CHANGED</code></li>
+<li>Parameters:
+
+<ul>
+<li><code>SETPOINT</code></li>
+<li><code>SCALE</code></li>
+</ul></li>
+</ul>
+
+<p>See the thermostat setpoint notification documentation for the exact parameter details and valid values.</p>
 
 <h3 id='thermostat-proxy-commands-inc_setpoint_single-returns'>Returns</h3>
 
@@ -4157,9 +4305,9 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <h3 id='thermostat-proxy-commands-update_schedule_entry_name-returns'>Returns</h3>
 
 <p><code>None</code></p>
-<h1 id='thermostat-unhandled-commands'>Thermostat Unhandled Commands</h1>
+<h1 id='thermostat-commands-not-handled-by-the-proxy'>Thermostat Commands not Handled by the Proxy</h1>
 
-<h2 id='thermostat-unhandled-commands-unhandled-commands'>Unhandled Commands</h2>
+<h2 id='thermostat-commands-not-handled-by-the-proxy-commands-not-handled-by-the-proxy'>Commands Not Handled by the Proxy</h2>
 
 <p>This section includes Commands supported by many protocol drivers but are not directly handled by the Thermostat proxy:</p>
 
