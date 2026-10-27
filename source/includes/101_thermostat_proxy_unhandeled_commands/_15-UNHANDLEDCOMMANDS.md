@@ -1,4 +1,4 @@
-## Unhandled Commands
+## Commands Not Handled by the Proxy
 
 This section includes Commands supported by many protocol drivers but are not directly handled by the Thermostat proxy:
 

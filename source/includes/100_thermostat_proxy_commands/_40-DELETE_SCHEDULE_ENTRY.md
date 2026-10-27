@@ -19,7 +19,16 @@ Introduced in OS Release 4.3.0.
 
 `DELETE_SCHEDULE_ENTRY`
 
+## Notification
 
+`SCHEDULE_ENTRY_DELETED`
+
+Parameters:
+
+- `EntryIndex`
+- `DayIndex` (optional, included when the command applies to a specific day)
+
+This notification is sent when a schedule entry is deleted. If the delete is scoped to a single day, both `EntryIndex` and `DayIndex` are included. If the delete applies across all days, the notification may include only `EntryIndex`.
 ### Returns
 
 `None`
