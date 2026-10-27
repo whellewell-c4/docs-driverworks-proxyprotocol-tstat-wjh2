@@ -1,6 +1,6 @@
 ## ALLOWED\_FAN\_MODES \_CHANGED
 
-Changes the value of the variable `FAN_MODES_LIST`.
+Updates the allowed fan mode list for the thermostat.
 
 
 ### Name
@@ -8,9 +8,29 @@ Changes the value of the variable `FAN_MODES_LIST`.
 `ALLOWED_FAN_MODES_CHANGED ()`
 
 
-| Parameter | Type  | Description                                |
-| --------- | ----- | ------------------------------------------ |
-| `Modes`   | LIST. | A comma delimited list of available modes. |
+### Parameters
+
+| Name    | Type | Description                                              |
+| ------- | ---- | -------------------------------------------------------- |
+| `Modes` | LIST | Required. A comma-delimited list of available fan modes. |
+
+
+### Updated variables
+
+- `FanModes` (ID = 1121)
+- `FanMode` (ID = 1105)
+
+
+### Lua example
+
+```lua
+local ModesStr = "On,Auto,Circulate,Schedule,Low,Medium,High"
+local Params = {
+    MODES = tostring(ModesStr)
+}
+
+SendNotify("ALLOWED_FAN_MODES_CHANGED", Params, BindingID)
+```
 
 
 ### Returns
