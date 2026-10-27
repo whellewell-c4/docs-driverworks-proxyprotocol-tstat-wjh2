@@ -429,6 +429,9 @@
                     <a href="#thermostat-notifications-allowed_fan_modes-_changed" class="toc-h2 toc-link" data-title="ALLOWED_FAN_MODES _CHANGED">ALLOWED_FAN_MODES _CHANGED</a>
                   </li>
                   <li>
+                    <a href="#thermostat-notifications-allowed_hold_modes_changed" class="toc-h2 toc-link" data-title="ALLOWED_HOLD_MODES_CHANGED">ALLOWED_HOLD_MODES_CHANGED</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-notifications-allowed_humidity_modes_changed" class="toc-h2 toc-link" data-title="ALLOWED_HUMIDITY_MODES_CHANGED">ALLOWED_HUMIDITY_MODES_CHANGED</a>
                   </li>
                   <li>
@@ -486,6 +489,9 @@
                     <a href="#thermostat-notifications-hvac_state_changed" class="toc-h2 toc-link" data-title="HVAC_STATE_CHANGED">HVAC_STATE_CHANGED</a>
                   </li>
                   <li>
+                    <a href="#thermostat-notifications-lock_screen_mode_changed" class="toc-h2 toc-link" data-title="LOCK_SCREEN_MODE_CHANGED">LOCK_SCREEN_MODE_CHANGED</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-notifications-message_changed" class="toc-h2 toc-link" data-title="MESSAGE_CHANGED">MESSAGE_CHANGED</a>
                   </li>
                   <li>
@@ -502,6 +508,12 @@
                   </li>
                   <li>
                     <a href="#thermostat-notifications-schedule_entry_changed" class="toc-h2 toc-link" data-title="SCHEDULE_ENTRY_CHANGED">SCHEDULE_ENTRY_CHANGED</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-notifications-schedule_entry_name_changed" class="toc-h2 toc-link" data-title="SCHEDULE_ENTRY_NAME_CHANGED">SCHEDULE_ENTRY_NAME_CHANGED</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-notifications-schedule_entry_restored" class="toc-h2 toc-link" data-title="SCHEDULE_ENTRY_RESTORED">SCHEDULE_ENTRY_RESTORED</a>
                   </li>
                   <li>
                     <a href="#thermostat-notifications-single_setpoint_changed" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_CHANGED">SINGLE_SETPOINT_CHANGED</a>
@@ -1410,29 +1422,85 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 
 <h2 id='thermostat-notifications-allowed_fan_modes-_changed'>ALLOWED_FAN_MODES _CHANGED</h2>
 
-<p>Changes the value of the variable <code>FAN_MODES_LIST</code>.</p>
+<p>Updates the allowed fan mode list for the thermostat.</p>
 
 <h3 id='thermostat-notifications-allowed_fan_modes-_changed-name'>Name</h3>
 
 <p><code>ALLOWED_FAN_MODES_CHANGED ()</code></p>
 
+<h3 id='thermostat-notifications-allowed_fan_modes-_changed-parameters'>Parameters</h3>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>Modes</code></td>
-<td>LIST.</td>
-<td>A comma delimited list of available modes.</td>
+<td>LIST</td>
+<td>Required. A comma-delimited list of available fan modes.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-notifications-allowed_fan_modes-_changed-returns'>Returns</h3>
+<h3 id='thermostat-notifications-allowed_fan_modes-_changed-updated-variables'>Updated variables</h3>
+
+<ul>
+<li><code>FanModes</code> (ID = 1121)</li>
+<li><code>FanMode</code> (ID = 1105)</li>
+</ul>
+
+<h3 id='thermostat-notifications-allowed_fan_modes-_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">ModesStr</span> <span class="o">=</span> <span class="s2">"On,Auto,Circulate,Schedule,Low,Medium,High"</span>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">MODES</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">ModesStr</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"ALLOWED_FAN_MODES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+</code></pre></div><h3 id='thermostat-notifications-allowed_fan_modes-_changed-returns'>Returns</h3>
 
 <p><code>None</code></p>
+
+<h2 id='thermostat-notifications-allowed_hold_modes_changed'>ALLOWED_HOLD_MODES_CHANGED</h2>
+
+<p>Updates the available hold modes for the thermostat.</p>
+
+<h3 id='thermostat-notifications-allowed_hold_modes_changed-name'>Name</h3>
+
+<p><code>ALLOWED_HOLD_MODES_CHANGED</code></p>
+
+<h3 id='thermostat-notifications-allowed_hold_modes_changed-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MODES</code></td>
+<td>LIST</td>
+<td>Required. A comma-delimited list of available hold modes.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-notifications-allowed_hold_modes_changed-updated-variables'>Updated variables</h3>
+
+<ul>
+<li><code>HoldModes</code> (ID = 1122)</li>
+<li><code>HoldMode</code> (ID = 1106)</li>
+</ul>
+
+<h3 id='thermostat-notifications-allowed_hold_modes_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">ModesStr</span> <span class="o">=</span> <span class="s2">"Next Period,Hold Until,Permanently,Remove Hold"</span>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">MODES</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">ModesStr</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"ALLOWED_HOLD_MODES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+</code></pre></div><h3 id='thermostat-notifications-allowed_hold_modes_changed-returns'>Returns</h3>
+
+<p>None.</p>
 
 <h2 id='thermostat-notifications-allowed_humidity_modes_changed'>ALLOWED_HUMIDITY_MODES_CHANGED</h2>
 
@@ -1989,6 +2057,45 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 
 <p><code>None</code></p>
 
+<h2 id='thermostat-notifications-lock_screen_mode_changed'>LOCK_SCREEN_MODE_CHANGED</h2>
+
+<p>Updates the current lock screen mode.  This notification is new in 4.3.0.</p>
+
+<h3 id='thermostat-notifications-lock_screen_mode_changed-name'>Name</h3>
+
+<p><code>LOCK_SCREEN_MODE_CHANGED</code></p>
+
+<h3 id='thermostat-notifications-lock_screen_mode_changed-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MODE</code></td>
+<td>STRING</td>
+<td>Required. The new lock screen mode value. Modes come from the <code>lock_screen_modes</code> capability.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-notifications-lock_screen_mode_changed-updated-variables'>Updated variables</h3>
+
+<ul>
+<li><code>LockScreenMode</code> (ID = 1151)</li>
+</ul>
+
+<h3 id='thermostat-notifications-lock_screen_mode_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">MODE</span> <span class="o">=</span> <span class="s2">"Partially Locked"</span>
+<span class="p">}</span>
+
+<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"LOCK_SCREEN_MODE_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+</code></pre></div><h3 id='thermostat-notifications-lock_screen_mode_changed-returns'>Returns</h3>
+
+<p>None.</p>
+
 <h2 id='thermostat-notifications-message_changed'>MESSAGE_CHANGED</h2>
 
 <p>Update the text message displayed in the UI.  Multiple lines can be specified by using \n to separate lines, although UI&#39;s will display each line in its own way. Could be a paragraph, ticker scrolling, cycling, etc. To UI comes through as <code>message</code>.</p>
@@ -2172,6 +2279,121 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 </tbody></table>
 
 <h3 id='thermostat-notifications-schedule_entry_changed-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h3 id='thermostat-notifications-schedule_entry_changed-name'>Name</h3>
+
+<p><code>SCHEDULE_ENTRY_DELETED</code> This notification is new in 4.3.0.</p>
+
+<h3 id='thermostat-notifications-schedule_entry_changed-parameters'>Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ENTRY_INDEX</code></td>
+<td>INTEGER</td>
+<td>Required. The schedule entry index to delete.</td>
+</tr>
+<tr>
+<td><code>DAY_INDEX</code></td>
+<td>INTEGER</td>
+<td>Optional. The day index to target. If omitted, the delete is applied across all days.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-notifications-schedule_entry_changed-updated-variables'>Updated variables</h3>
+
+<ul>
+<li><code>EntireSchedule</code> (ID = 1113)</li>
+</ul>
+
+<h3 id='thermostat-notifications-schedule_entry_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="s2">"0"</span>
+<span class="p">}</span>
+
+<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_DELETED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+</code></pre></div><h3 id='thermostat-notifications-schedule_entry_changed-returns'>Returns</h3>
+
+<p>None.</p>
+
+<p>This notification is new in 4.3.0. If a specific <code>DAY_INDEX</code> is provided, the handler deletes that one schedule entry for that day; otherwise, it applies the delete across all days. After the update, it refreshes the affected schedule data and sends the updated schedule to the UI.</p>
+
+<h2 id='thermostat-notifications-schedule_entry_name_changed'>SCHEDULE_ENTRY_NAME_CHANGED</h2>
+
+<p>New in 4.3.0.</p>
+
+<h3 id='thermostat-notifications-schedule_entry_name_changed-parameters'>Parameters</h3>
+
+<ul>
+<li><code>ENTRY_INDEX</code> — required. The schedule entry index to rename.</li>
+<li><code>ENTRY_NAME</code> — required. The new name to assign to the schedule entry.</li>
+<li><code>DAY_INDEX</code> — optional. If supplied, only that day’s entry is renamed. If omitted, the same entry index is renamed across all days in the week.</li>
+</ul>
+
+<h3 id='thermostat-notifications-schedule_entry_name_changed-updated-variables'>Updated variables</h3>
+
+<p><code>None</code></p>
+
+<h3 id='thermostat-notifications-schedule_entry_name_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_NAME_CHANGED"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="n">ENTRY_NAME</span> <span class="o">=</span> <span class="s2">"Wake"</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>When <code>DAY_INDEX</code> is omitted:</p>
+<div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_NAME_CHANGED"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="n">ENTRY_NAME</span> <span class="o">=</span> <span class="s2">"Wake"</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This applies the rename to the same entry index on every day of the schedule.</p>
+<h3 id='thermostat-notifications-schedule_entry_name_changed-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-notifications-schedule_entry_restored'>SCHEDULE_ENTRY_RESTORED</h2>
+
+<p>New in 4.3.0.</p>
+
+<h3 id='thermostat-notifications-schedule_entry_restored-parameters'>Parameters</h3>
+
+<ul>
+<li><code>ENTRY_INDEX</code> — required. The schedule entry index to restore.</li>
+<li><code>DAY_INDEX</code> — optional. If supplied, only that day’s entry is restored. If omitted, the same entry index is restored across all days in the week.</li>
+</ul>
+
+<h3 id='thermostat-notifications-schedule_entry_restored-updated-variables'>Updated variables</h3>
+
+<ul>
+<li>None directly.</li>
+<li>The handler updates the schedule entry state in memory and refreshes the UI schedule data:
+
+<ul>
+<li><code>ConSendDataToUI(GetScheduleEntry(entry))</code> when a single day is targeted</li>
+<li><code>ConSendDataToUI(GetSchedule())</code> when the restore applies across the week</li>
+<li><code>BC_SendSingleScheduleEntry(entry)</code> or <code>BC_SendSchedule()</code></li>
+</ul></li>
+</ul>
+
+<h3 id='thermostat-notifications-schedule_entry_restored-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_RESTORED"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="s2">"1"</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>When <code>DAY_INDEX</code> is omitted:</p>
+<div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_RESTORED"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This restores the same entry index on every day of the schedule.</p>
+<h3 id='thermostat-notifications-schedule_entry_restored-returns'>Returns</h3>
 
 <p><code>None</code></p>
 
