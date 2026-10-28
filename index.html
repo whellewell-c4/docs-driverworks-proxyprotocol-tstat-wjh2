@@ -560,7 +560,7 @@
                     <a href="#thermostat-dynamic-notifications-cool_setpoint_min_f" class="toc-h2 toc-link" data-title="COOL_SETPOINT_MIN_F">COOL_SETPOINT_MIN_F</a>
                   </li>
                   <li>
-                    <a href="#thermostat-dynamic-notifications-cool_setpoint_resolution-c" class="toc-h2 toc-link" data-title="COOL_SETPOINT_RESOLUTION C">COOL_SETPOINT_RESOLUTION C</a>
+                    <a href="#thermostat-dynamic-notifications-cool_setpoint_resolution_c" class="toc-h2 toc-link" data-title="COOL_SETPOINT_RESOLUTION_C">COOL_SETPOINT_RESOLUTION_C</a>
                   </li>
                   <li>
                     <a href="#thermostat-dynamic-notifications-cool_setpoint_resolution_f" class="toc-h2 toc-link" data-title="COOL_SETPOINT_RESOLUTION_F">COOL_SETPOINT_RESOLUTION_F</a>
@@ -572,7 +572,7 @@
                     <a href="#thermostat-dynamic-notifications-dehumidify_setpoint_min" class="toc-h2 toc-link" data-title="DEHUMIDIFY_SETPOINT_MIN">DEHUMIDIFY_SETPOINT_MIN</a>
                   </li>
                   <li>
-                    <a href="#thermostat-dynamic-notifications-dehumidify_setpoint-_resolution" class="toc-h2 toc-link" data-title="DEHUMIDIFY_SETPOINT _RESOLUTION">DEHUMIDIFY_SETPOINT _RESOLUTION</a>
+                    <a href="#thermostat-dynamic-notifications-dehumidify_setpoint_resolution" class="toc-h2 toc-link" data-title="DEHUMIDIFY_SETPOINT_RESOLUTION">DEHUMIDIFY_SETPOINT_RESOLUTION</a>
                   </li>
                   <li>
                     <a href="#thermostat-dynamic-notifications-has_extras" class="toc-h2 toc-link" data-title="HAS_EXTRAS">HAS_EXTRAS</a>
@@ -626,13 +626,13 @@
                     <a href="#thermostat-dynamic-notifications-single_setpoint_max_c" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MAX_C">SINGLE_SETPOINT_MAX_C</a>
                   </li>
                   <li>
-                    <a href="#thermostat-dynamic-notifications-single_setpoint_max_-f" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MAX_ F">SINGLE_SETPOINT_MAX_ F</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-dynamic-notifications-single_setpoint_min_-c" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MIN_ C">SINGLE_SETPOINT_MIN_ C</a>
+                    <a href="#thermostat-dynamic-notifications-single_setpoint_max_f" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MAX_F">SINGLE_SETPOINT_MAX_F</a>
                   </li>
                   <li>
                     <a href="#thermostat-dynamic-notifications-single_setpoint_min_c" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MIN_C">SINGLE_SETPOINT_MIN_C</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-dynamic-notifications-single_setpoint_min_f" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MIN_F">SINGLE_SETPOINT_MIN_F</a>
                   </li>
                   <li>
                     <a href="#thermostat-dynamic-notifications-single_setpoint_resolution_c" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_RESOLUTION_C">SINGLE_SETPOINT_RESOLUTION_C</a>
@@ -2946,7 +2946,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
 </code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_dehumidify'>CAN_DEHUMIDIFY</h2>
-<p>An optional parameter included in a [<code>DYNAMIC_CAPABILITIES_CHANGED</code>][1] notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the [<code>can_dehumidify</code>][2] capability. When set to <code>True</code>, the thermostat supports dehumidification; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_dehumidify</code></a> capability. When set to <code>True</code>, the thermostat supports dehumidification; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_dehumidify-name'>Name</h3>
 
 <p><code>CAN_DEHUMIDIFY ()</code></p>
@@ -2964,7 +2964,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <td>CAN_DEHUMIDIFY</td>
 <td>BOOL</td>
 <td>False</td>
-<td>[<code>can_dehumidify</code>][2]</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_dehumidify</code></a></td>
 <td>True/False. Thermostat supports dehumidification.</td>
 </tr>
 </tbody></table>
@@ -2981,7 +2981,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
 </code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_heat'>CAN_HEAT</h2>
-<p>An optional parameter included in a [<code>DYNAMIC_CAPABILITIES_CHANGED</code>][1] notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the [<code>can_heat</code>][2] capability. When set to <code>True</code>, the device reports that Heat mode is supported; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>True</code>.</p>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_heat</code></a> capability. When set to <code>True</code>, the device reports that Heat mode is supported; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>True</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_heat-name'>Name</h3>
 
 <p><code>CAN_HEAT ()</code></p>
@@ -2999,7 +2999,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <td>CAN_HEAT</td>
 <td>BOOL</td>
 <td>True</td>
-<td>[<code>can_heat</code>][2]</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_heat</code></a></td>
 <td>True/False. Thermostat supports heating.</td>
 </tr>
 </tbody></table>
@@ -3016,7 +3016,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
 </code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_humidify'>CAN_HUMIDIFY</h2>
-<p>Boolean to enable/disable <code>can_humidify</code> capability. If the device supports this feature, default is False.</p>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_humidify</code></a> capability. When set to <code>True</code>, the thermostat supports humidification; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_humidify-name'>Name</h3>
 
 <p><code>CAN_HUMIDIFY ()</code></p>
@@ -3025,140 +3025,255 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>CAN_HUMIDIFY</td>
 <td>BOOL</td>
-<td>True/False. Enable/disable <code>can_humidify</code> capability</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_humidify</code></a></td>
+<td>True/False. Thermostat supports humidification.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-can_humidify-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-can_humidify-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanHumidify</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_HUMIDIFY</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanHumidify</span><span class="p">)</span>
+<span class="p">}</span>
 
-<h2 id='thermostat-dynamic-notifications-cool_setpoint_max_c'>COOL_SETPOINT_MAX_C</h2><h3 id='thermostat-dynamic-notifications-cool_setpoint_max_c-name'>Name</h3>
-<p><code>COOL_SETPOINT_ MAX_C ()</code></p>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-cool_setpoint_max_c'>COOL_SETPOINT_MAX_C</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum cool setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max_c</code></a> capability. If the parameter is not provided, the default is <code>32</code>.</p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_max_c-name'>Name</h3>
+
+<p><code>COOL_SETPOINT_MAX_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Minimum Setpoint</td>
+<td>COOL_SETPOINT_MAX_C</td>
 <td>INT</td>
-<td>0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max</code></a> capability, default 100</td>
+<td>32</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max_c</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min_c</code></a></td>
+<td>Maximum cool setpoint in Celsius.</td>
 </tr>
 </tbody></table>
-<h3 id='thermostat-dynamic-notifications-cool_setpoint_max_c-returns'>Returns</h3>
-<p>`None
-`</p>
 
-<h2 id='thermostat-dynamic-notifications-cool_setpoint_max_f'>COOL_SETPOINT_MAX_F</h2><h3 id='thermostat-dynamic-notifications-cool_setpoint_max_f-name'>Name</h3>
-<p><code>COOL_SETPOINT_ MAX_F ()</code></p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_max_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CoolSetpointMaxC</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">COOL_SETPOINT_MAX_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CoolSetpointMaxC</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-cool_setpoint_max_f'>COOL_SETPOINT_MAX_F</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum cool setpoint in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max_f</code></a> capability. If the parameter is not provided, the default is <code>90</code>.</p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_max_f-name'>Name</h3>
+
+<p><code>COOL_SETPOINT_MAX_F ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Minimum Setpoint</td>
+<td>COOL_SETPOINT_MAX_F</td>
 <td>INT</td>
-<td>0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max</code></a> capability, default 100</td>
+<td>90</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max_f</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min_f</code></a></td>
+<td>Maximum cool setpoint in Fahrenheit.</td>
 </tr>
 </tbody></table>
-<h3 id='thermostat-dynamic-notifications-cool_setpoint_max_f-returns'>Returns</h3>
-<p>`None
-`</p>
 
-<h2 id='thermostat-dynamic-notifications-cool_setpoint_min_c'>COOL_SETPOINT_MIN_C</h2><h3 id='thermostat-dynamic-notifications-cool_setpoint_min_c-name'>Name</h3>
-<p><code>COOL_SETPOINT_ MIN_C ()</code></p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_max_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CoolSetpointMaxF</span> <span class="o">=</span> <span class="mi">90</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">COOL_SETPOINT_MAX_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CoolSetpointMaxF</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-cool_setpoint_min_c'>COOL_SETPOINT_MIN_C</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the minimum cool setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min_c</code></a> capability. If the parameter is not provided, the default is <code>5</code>.</p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_min_c-name'>Name</h3>
+
+<p><code>COOL_SETPOINT_MIN_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Minimum Setpoint</td>
+<td>COOL_SETPOINT_MIN_C</td>
 <td>INT</td>
-<td>0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min</code></a> capability, default 100</td>
+<td>5</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min_c</code></a></td>
+<td>0-100 and &gt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max_c</code></a></td>
+<td>Minimum cool setpoint in Celsius.</td>
 </tr>
 </tbody></table>
-<h3 id='thermostat-dynamic-notifications-cool_setpoint_min_c-returns'>Returns</h3>
-<p><code>None</code></p>
 
-<h2 id='thermostat-dynamic-notifications-cool_setpoint_min_f'>COOL_SETPOINT_MIN_F</h2><h3 id='thermostat-dynamic-notifications-cool_setpoint_min_f-name'>Name</h3>
-<p><code>COOL_SETPOINT_ MIN_F ()</code></p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_min_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CoolSetpointMinC</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">COOL_SETPOINT_MIN_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CoolSetpointMinC</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-cool_setpoint_min_f'>COOL_SETPOINT_MIN_F</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the minimum cool setpoint in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min_f</code></a> capability. If the parameter is not provided, the default is <code>39</code>.</p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_min_f-name'>Name</h3>
+
+<p><code>COOL_SETPOINT_MIN_F ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Minimum Setpoint</td>
+<td>COOL_SETPOINT_MIN_F</td>
 <td>INT</td>
-<td>0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min</code></a> capability, default 100</td>
+<td>39</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_min_f</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_max_f</code></a></td>
+<td>Minimum cool setpoint in Fahrenheit.</td>
 </tr>
 </tbody></table>
-<h3 id='thermostat-dynamic-notifications-cool_setpoint_min_f-returns'>Returns</h3>
-<p><code>None</code></p>
 
-<h2 id='thermostat-dynamic-notifications-cool_setpoint_resolution-c'>COOL_SETPOINT_RESOLUTION C</h2><h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution-c-name'>Name</h3>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_min_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CoolSetpointMinF</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">COOL_SETPOINT_MIN_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CoolSetpointMinF</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-cool_setpoint_resolution_c'>COOL_SETPOINT_RESOLUTION_C</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the cool setpoint resolution in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_resolution_c</code></a> capability. If the parameter is not provided, the default is <code>1</code>.</p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution_c-name'>Name</h3>
+
 <p><code>COOL_SETPOINT_RESOLUTION_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>SETPOINT</td>
+<td>COOL_SETPOINT_RESOLUTION_C</td>
 <td>INT</td>
-<td>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_resolution</code></a> capability, default 1</td>
+<td>1</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_resolution_c</code></a></td>
+<td>0.01-100</td>
+<td>Cool setpoint resolution in Celsius (ie 1,3,5,10,etc).</td>
 </tr>
 </tbody></table>
-<h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution-c-returns'>Returns</h3>
-<p>None</p>
 
-<h2 id='thermostat-dynamic-notifications-cool_setpoint_resolution_f'>COOL_SETPOINT_RESOLUTION_F</h2><h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution_f-name'>Name</h3>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CoolSetpointResolutionC</span> <span class="o">=</span> <span class="p">.</span><span class="mi">5</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">COOL_SETPOINT_RESOLUTION_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CoolSetpointResolutionC</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-cool_setpoint_resolution_f'>COOL_SETPOINT_RESOLUTION_F</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the cool setpoint resolution in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_resolution_f</code></a> capability. If the parameter is not provided, the default is <code>1</code>.</p>
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution_f-name'>Name</h3>
+
 <p><code>COOL_SETPOINT_RESOLUTION_F ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>SETPOINT</td>
+<td>COOL_SETPOINT_RESOLUTION_F</td>
 <td>INT</td>
-<td>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_resolution</code></a> capability, default 1</td>
+<td>1</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_cool_resolution_f</code></a></td>
+<td>0.01-100</td>
+<td>Cool setpoint resolution in Fahrenheit (ie 1,3,5,10,etc).</td>
 </tr>
 </tbody></table>
-<h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution_f-returns'>Returns</h3>
-<p><code>None</code></p>
 
+<h3 id='thermostat-dynamic-notifications-cool_setpoint_resolution_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CoolSetpointResolutionF</span> <span class="o">=</span> <span class="p">.</span><span class="mi">5</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">COOL_SETPOINT_RESOLUTION_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CoolSetpointResolutionF</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-dehumidify_setpoint_max'>DEHUMIDIFY_SETPOINT_MAX</h2>
-
-<p>The maximun dehumidify setpoint has changed.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum dehumidify setpoint. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_max</code></a> capability. If the parameter is not provided, the default is <code>100</code>.</p>
 <h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_max-name'>Name</h3>
 
 <p><code>DEHUMIDIFY_SETPOINT_MAX ()</code></p>
@@ -3166,23 +3281,36 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>MAXIMUM SETPOINT: (0-100). To UI comes through as <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_max</code> </a>capability. Defaults to 100.</td>
+<td>DEHUMIDIFY_SETPOINT_MAX</td>
+<td>INT</td>
+<td>100</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_max</code></a></td>
+<td>0-100</td>
+<td>Maximum dehumidify setpoint.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_max-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_max-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">DehumidifySetpointMax</span> <span class="o">=</span> <span class="mi">60</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">DEHUMIDIFY_SETPOINT_MAX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">DehumidifySetpointMax</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-dehumidify_setpoint_min'>DEHUMIDIFY_SETPOINT_MIN</h2>
-
-<p>The minimum dehumidify setpoint has changed.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the minimum dehumidify setpoint. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_min</code></a> capability. If the parameter is not provided, the default is <code>0</code>.</p>
 <h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_min-name'>Name</h3>
 
 <p><code>DEHUMIDIFY_SETPOINT_MIN ()</code></p>
@@ -3190,51 +3318,73 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>MINIMUM SETPOINT: (0-100). To UI comes through as <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpointdehumidifymin</code></a>` capability. Defaults to 0.</td>
+<td>DEHUMIDIFY_SETPOINT_MIN</td>
+<td>INT</td>
+<td>0</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_min</code></a></td>
+<td>0-100</td>
+<td>Minimum dehumidify setpoint.</td>
 </tr>
 </tbody></table>
 
-<p>`</p>
+<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_min-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">DehumidifySetpointMin</span> <span class="o">=</span> <span class="mi">30</span>
 
-<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_min-returns'>Returns</h3>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">DEHUMIDIFY_SETPOINT_MIN</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">DehumidifySetpointMin</span><span class="p">)</span>
+<span class="p">}</span>
 
-<p><code>None
-</code></p>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
 
-<h2 id='thermostat-dynamic-notifications-dehumidify_setpoint-_resolution'>DEHUMIDIFY_SETPOINT _RESOLUTION</h2>
-
-<p>The  dehumidify setpoint resolution has changed.</p>
-
-<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint-_resolution-name'>Name</h3>
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-dehumidify_setpoint_resolution'>DEHUMIDIFY_SETPOINT_RESOLUTION</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the dehumidify setpoint resolution. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_resolution</code></a> capability. If the parameter is not provided, the default is <code>1</code>.</p>
+<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_resolution-name'>Name</h3>
 
 <p><code>DEHUMIDIFY_SETPOINT_RESOLUTION ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpointdehumidifyresolution</code></a>\` capability, default 1</td>
+<td>DEHUMIDIFY_SETPOINT_RESOLUTION</td>
+<td>INT</td>
+<td>1</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_dehumidify_resolution</code></a></td>
+<td>0-100</td>
+<td>Dehumidify setpoint resolution.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint-_resolution-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-dehumidify_setpoint_resolution-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">DehumidifySetpointResolution</span> <span class="o">=</span> <span class="mi">5</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">DEHUMIDIFY_SETPOINT_RESOLUTION</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">DehumidifySetpointResolution</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-has_extras'>HAS_EXTRAS</h2>
-
-<p>Boolean to enable/disable <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_extras capability</code></a>.  If the device supports this feature, default is false
-Updates the XML that will be consumed by the Navigator UI’s.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_extras</code></a> capability. When set to <code>True</code>, the driver needs to provide the <code>&lt;extras&gt;</code> XML containing the definition of all the <code>Extras</code> needed by the UI. This is provided by the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-extras_setup_changed"><code>EXTRAS_SETUP_CHANGED</code></a> notification.  extra the  exposes the thermostat features; when set to <code>False</code>, the capability is disabled and the driver does not provide any <code>Extras</code>. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-has_extras-name'>Name</h3>
 
 <p><code>HAS_EXTRAS ()</code></p>
@@ -3243,30 +3393,33 @@ Updates the XML that will be consumed by the Navigator UI’s.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>XML</td>
-<td>STR</td>
-<td>Text string of XML that matches the Preset Schedule A.</td>
+<td>HAS_EXTRAS</td>
+<td>BOOL</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_extras</code></a></td>
+<td>True/False. Thermostat exposes &quot;Extras&quot; feature.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-has_extras-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-has_extras-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HasExtras</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HAS_EXTRAS</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HasExtras</span><span class="p">)</span>
+<span class="p">}</span>
 
-<p>HAS_EXTRAS - boolean to enable/disable has_extras capability, if the device supports this feature, default is false
-Updates the XML that will be consumed by the Navigator UI&#39;s</p>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
 
-<p>Parameters
-XML text string of XML that matches the Preset Schedule API.</p>
-
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-has_heat_pump'>HAS_HEAT_PUMP</h2>
-
-<p>Boolean to enable/disable <code>has_heat_pump</code>. If the device supports this feature, default is false.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_heat_pump</code></a> capability. When set to <code>True</code>, the thermostat is configured as a heat pump system; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-has_heat_pump-name'>Name</h3>
 
 <p><code>HAS_HEAT_PUMP ()</code></p>
@@ -3274,51 +3427,69 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>HAS_HEAT_PUMP</td>
 <td>BOOL</td>
-<td>True/False. enable/disable <code>has_heat_pump</code></td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_heat_pump</code></a></td>
+<td>True/False. Thermostat is configured as a heat pump.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-has_heat_pump-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-has_heat_pump-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HasHeatPump</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HAS_HEAT_PUMP</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HasHeatPump</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-has_humidity'>HAS_HUMIDITY</h2>
-
-<p>Boolean to enable/disable <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_humidity</code></a> capability. If the device supports this feature, default is false</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_humidity</code></a> capability. When set to <code>True</code>, the thermostat exposes humidity values; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-has_humidity-name'>Name</h3>
 
-<p><code>HAS_ HUMIDITY ()</code></p>
+<p><code>HAS_HUMIDITY ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>HAS_HUMIDITY</td>
 <td>BOOL</td>
-<td>True/False. enable/disable <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_humidity</code></a> capability.</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_humidity</code></a></td>
+<td>True/False. Thermostat exposes humidity data.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-has_humidity-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-has_humidity-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HasHumidity</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HAS_HUMIDITY</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HasHumidity</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-has_outdoor_temperature'>HAS_OUTDOOR_TEMPERATURE</h2>
-
-<p>Boolean to enable/disable <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_outdoor_temperature</code></a> capability, if the device supports this feature, default is false</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_outdoor_temperature</code></a> capability. When set to <code>True</code>, the thermostat supports and exposes outdoor temperature data; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-has_outdoor_temperature-name'>Name</h3>
 
 <p><code>HAS_OUTDOOR_TEMPERATURE ()</code></p>
@@ -3327,72 +3498,107 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>HAS_OUTDOOR_TEMPERATURE</td>
 <td>BOOL</td>
-<td>True/False. enable/disable <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_outdoor_temperature</code></a> capability.</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_outdoor_temperature</code></a></td>
+<td>True/False. Thermostat exposes outdoor temperature.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-has_outdoor_temperature-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-has_outdoor_temperature-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HasOutdoorTemperature</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HAS_OUTDOOR_TEMPERATURE</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HasOutdoorTemperature</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_c'>HEATCOOL_SETPOINTS_DEADBAND_C</h2>
-
-<p>Minimum Setpoint difference between heat and will do the same thing as <code>setpoint_heatcool_deadband</code>. </p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the heat/cool deadband in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heatcool_deadband_c</code></a> capability. If the parameter is not provided, the default is <code>2</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_c-name'>Name</h3>
 
-<p><code>HEATCOOL_SETPOINTS_DEADBAND_C</code></p>
+<p><code>HEATCOOL_SETPOINTS_DEADBAND_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>num</td>
-<td>Default 2</td>
+<td>HEATCOOL_SETPOINTS_DEADBAND_C</td>
+<td>INT</td>
+<td>2</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heatcool_deadband_c</code></a></td>
+<td></td>
+<td>Heat/cool deadband in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatCoolSetpointsDeadbandC</span> <span class="o">=</span> <span class="mi">2</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEATCOOL_SETPOINTS_DEADBAND_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatCoolSetpointsDeadbandC</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_f'>HEATCOOL_SETPOINTS_DEADBAND_F</h2>
-
-<p>Minimum Setpoint difference between heat and will do the same thing as <code>setpoint_heatcool_deadband</code>. </p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the heat/cool deadband in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heatcool_deadband_f</code></a> capability. If the parameter is not provided, the default is <code>2</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_f-name'>Name</h3>
 
-<p><code>HEATCOOL_SETPOINTS_DEADBAND_F</code> </p>
+<p><code>HEATCOOL_SETPOINTS_DEADBAND_F ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>num</td>
-<td>Default 2</td>
+<td>HEATCOOL_SETPOINTS_DEADBAND_F</td>
+<td>INT</td>
+<td>2</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heatcool_deadband_f</code></a></td>
+<td></td>
+<td>Heat/cool deadband in Fahrenheit.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_f-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heatcool_setpoints_deadband_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatCoolSetpointsDeadbandF</span> <span class="o">=</span> <span class="mi">2</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEATCOOL_SETPOINTS_DEADBAND_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatCoolSetpointsDeadbandF</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heat_setpoint_max_c'>HEAT_SETPOINT_MAX_C</h2>
-
-<p>Maximum Setpoint, int 0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max</code></a> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum heat setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max_c</code></a> capability. If the parameter is not provided, the default is <code>100</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heat_setpoint_max_c-name'>Name</h3>
 
 <p><code>HEAT_SETPOINT_MAX_C ()</code></p>
@@ -3400,23 +3606,36 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>Default 100</td>
+<td>HEAT_SETPOINT_MAX_C</td>
+<td>INT</td>
+<td>31</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max_c</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_min_c</code></a></td>
+<td>Maximum heat setpoint in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heat_setpoint_max_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heat_setpoint_max_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatSetpointMaxC</span> <span class="o">=</span> <span class="mi">32</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEAT_SETPOINT_MAX_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatSetpointMaxC</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heat_setpoint_max_f'>HEAT_SETPOINT_MAX_F</h2>
-
-<p>Maximum Setpoint, int 0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max</code></a> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum heat setpoint in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max_f</code></a> capability. If the parameter is not provided, the default is <code>100</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heat_setpoint_max_f-name'>Name</h3>
 
 <p><code>HEAT_SETPOINT_MAX_F ()</code></p>
@@ -3424,23 +3643,36 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>Default 100</td>
+<td>HEAT_SETPOINT_MAX_F</td>
+<td>INT</td>
+<td>89</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max_f</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_min_f</code></a></td>
+<td>Maximum heat setpoint in Fahrenheit.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heat_setpoint_max_f-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heat_setpoint_max_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatSetpointMaxF</span> <span class="o">=</span> <span class="mi">90</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEAT_SETPOINT_MAX_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatSetpointMaxF</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heat_setpoint_min_c'>HEAT_SETPOINT_MIN_C</h2>
-
-<p>Minimum Setpoint, int 0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_min</code></a> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based decimal value used to update the minimum heat setpoint in Celsius. The value must be expressed as a string so it can be passed through the proxy notification payload format. If the parameter is not provided, the default is <code>0</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heat_setpoint_min_c-name'>Name</h3>
 
 <p><code>HEAT_SETPOINT_MIN_C ()</code></p>
@@ -3448,23 +3680,36 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>Default 100</td>
+<td>HEAT_SETPOINT_MIN_C</td>
+<td>INT</td>
+<td>4</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_min_c</code></a></td>
+<td>0-100 and &gt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max_c</code></a></td>
+<td>Minimum heat setpoint in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heat_setpoint_min_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heat_setpoint_min_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatSetpointMinC</span> <span class="o">=</span> <span class="mi">5</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEAT_SETPOINT_MIN_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatSetpointMinC</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heat_setpoint_min_f'>HEAT_SETPOINT_MIN_F</h2>
-
-<p>Minimum Setpoint, int 0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_min</code></a> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based decimal value used to update the minimum heat setpoint in Fahrenheit. The value must be expressed as a string so it can be passed through the proxy notification payload format. If the parameter is not provided, the default is <code>0</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heat_setpoint_min_f-name'>Name</h3>
 
 <p><code>HEAT_SETPOINT_MIN_F ()</code></p>
@@ -3472,23 +3717,36 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>int</td>
-<td>Default 100</td>
+<td>HEAT_SETPOINT_MIN_F</td>
+<td>INT</td>
+<td>31</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_min_f</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_max_f</code></a></td>
+<td>Minimum heat setpoint in Fahrenheit.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heat_setpoint_min_f-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heat_setpoint_min_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatSetpointMinF</span> <span class="o">=</span> <span class="mi">40</span><span class="p">.</span><span class="mi">0</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEAT_SETPOINT_MIN_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatSetpointMinF</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heat_setpoint_resolution_c'>HEAT_SETPOINT_RESOLUTION_C</h2>
-
-<p>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_resolution</code></a> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the heat setpoint resolution in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_resolution_c</code></a> capability. If the parameter is not provided, the default is <code>1</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heat_setpoint_resolution_c-name'>Name</h3>
 
 <p><code>HEAT_SETPOINT_RESOLUTION_C ()</code></p>
@@ -3496,23 +3754,34 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>num</td>
-<td>Default 1</td>
+<td>HEAT_SETPOINT_RESOLUTION_C</td>
+<td>INT</td>
+<td>1</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_resolution_c</code></a></td>
+<td>Heat setpoint resolution in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heat_setpoint_resolution_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heat_setpoint_resolution_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatSetpointResolutionC</span> <span class="o">=</span> <span class="p">.</span><span class="mi">5</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEAT_SETPOINT_RESOLUTION_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatSetpointResolutionC</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-heat_setpoint_resolution_f'>HEAT_SETPOINT_RESOLUTION_F</h2>
-
-<p>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_resolution</code></a> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the heat setpoint resolution in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_resolution_f</code></a> capability. If the parameter is not provided, the default is <code>1</code>.</p>
 <h3 id='thermostat-dynamic-notifications-heat_setpoint_resolution_f-name'>Name</h3>
 
 <p><code>HEAT_SETPOINT_RESOLUTION_F ()</code></p>
@@ -3520,23 +3789,34 @@ XML text string of XML that matches the Preset Schedule API.</p>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>num</td>
-<td>Default 1</td>
+<td>HEAT_SETPOINT_RESOLUTION_F</td>
+<td>INT</td>
+<td>1</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_heat_resolution_f</code></a></td>
+<td>Heat setpoint resolution in Fahrenheit.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-heat_setpoint_resolution_f-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-heat_setpoint_resolution_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">HeatSetpointResolutionF</span> <span class="o">=</span> <span class="mi">2</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">HEAT_SETPOINT_RESOLUTION_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">HeatSetpointResolutionF</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-humidity_setpoint_deadband'>HUMIDITY_SETPOINT_DEADBAND</h2>
-
 <p>What the deadband between humidify and dehumidify is, will do the same thing as the <code>setpoint_humidity_deadband</code> capability.</p>
-
 <h3 id='thermostat-dynamic-notifications-humidity_setpoint_deadband-name'>Name</h3>
 
 <p><code>HUMIDITY_SETPOINT_DEADBAND ()</code> </p>
@@ -3631,155 +3911,224 @@ XML text string of XML that matches the Preset Schedule API.</p>
 
 <h2 id='thermostat-dynamic-notifications-single_setpoint_max_c'>SINGLE_SETPOINT_MAX_C</h2>
 
-<p>Maximum Setpoint. Will do the same thing as the <code>setpoint_single_max</code> capability.</p>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum single setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_c</code></a> capability. If the parameter is not provided, the default is <code>32</code>.</p>
 
 <h3 id='thermostat-dynamic-notifications-single_setpoint_max_c-name'>Name</h3>
 
-<p><code>SINGLE_SETPOINT_MAX_C ()</code> </p>
+<p><code>SINGLE_SETPOINT_MAX_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>SETPOINT</td>
+<td>SINGLE_SETPOINT_MAX_C</td>
 <td>INT</td>
-<td>0-100 default 100</td>
+<td>32</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_c</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_c</code></a></td>
+<td>Maximum single setpoint in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-single_setpoint_max_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-single_setpoint_max_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">SingleSetpointMaxC</span> <span class="o">=</span> <span class="mi">31</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">SINGLE_SETPOINT_MAX_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">SingleSetpointMaxC</span><span class="p">)</span>
+<span class="p">}</span>
 
-<h2 id='thermostat-dynamic-notifications-single_setpoint_max_-f'>SINGLE_SETPOINT_MAX_ F</h2>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
 
-<p>Maximum Setpoint. Will do the same thing as the <code>setpoint_single_max</code> capability.</p>
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-single_setpoint_max_f'>SINGLE_SETPOINT_MAX_F</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum single setpoint in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_f</code></a> capability. If the parameter is not provided, the default is <code>90</code>.</p>
+<h3 id='thermostat-dynamic-notifications-single_setpoint_max_f-name'>Name</h3>
 
-<h3 id='thermostat-dynamic-notifications-single_setpoint_max_-f-name'>Name</h3>
-
-<p><code>SINGLE_SETPOINT_MAX_F ()</code> </p>
+<p><code>SINGLE_SETPOINT_MAX_F ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>SETPOINT</td>
+<td>SINGLE_SETPOINT_MAX_F</td>
 <td>INT</td>
-<td>0-100 default 100</td>
+<td>90</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_f</code></a></td>
+<td>0-100 and &lt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_f</code></a></td>
+<td>Maximum single setpoint in Fahrenheit.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-single_setpoint_max_-f-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-single_setpoint_max_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">SingleSetpointMaxF</span> <span class="o">=</span> <span class="mi">90</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">SINGLE_SETPOINT_MAX_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">SingleSetpointMaxF</span><span class="p">)</span>
+<span class="p">}</span>
 
-<h2 id='thermostat-dynamic-notifications-single_setpoint_min_-c'>SINGLE_SETPOINT_MIN_ C</h2>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
 
-<p>Minimum Setpoint. Will do the same thing as the <code>setpoint_single_min</code> capability.</p>
-
-<h3 id='thermostat-dynamic-notifications-single_setpoint_min_-c-name'>Name</h3>
-
-<p><code>SINGLE_SETPOINT_MIN_C ()</code> </p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>SETPOINT:</td>
-<td>INT</td>
-<td>0-100 default 0</td>
-</tr>
-</tbody></table>
-
-<h3 id='thermostat-dynamic-notifications-single_setpoint_min_-c-returns'>Returns</h3>
-
-<p><code>None</code></p>
-
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-single_setpoint_min_c'>SINGLE_SETPOINT_MIN_C</h2>
-
-<p>Minimum Setpoint. Will do the same thing as the <code>setpoint_single_min</code> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the minimum single setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_c</code></a> capability. If the parameter is not provided, the default is <code>5</code>.</p>
 <h3 id='thermostat-dynamic-notifications-single_setpoint_min_c-name'>Name</h3>
 
-<p><code>SINGLE_SETPOINT_MIN_F ()</code> </p>
+<p><code>SINGLE_SETPOINT_MIN_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>SETPOINT:</td>
+<td>SINGLE_SETPOINT_MIN_C</td>
 <td>INT</td>
-<td>0-100 default 0</td>
+<td>5</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_c</code></a></td>
+<td>0-100 and &gt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_c</code></a></td>
+<td>Minimum single setpoint in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-single_setpoint_min_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-single_setpoint_min_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">SingleSetpointMinC</span> <span class="o">=</span> <span class="mi">4</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">SINGLE_SETPOINT_MIN_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">SingleSetpointMinC</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
+<h2 id='thermostat-dynamic-notifications-single_setpoint_min_f'>SINGLE_SETPOINT_MIN_F</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the minimum single setpoint in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_f</code></a> capability. If the parameter is not provided, the default is <code>39</code>.</p>
+<h3 id='thermostat-dynamic-notifications-single_setpoint_min_f-name'>Name</h3>
+
+<p><code>SINGLE_SETPOINT_MIN_F ()</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Range</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SINGLE_SETPOINT_MIN_F</td>
+<td>INT</td>
+<td>39</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_f</code></a></td>
+<td>0-100 and &gt; <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_min_c</code></a></td>
+<td>Minimum single setpoint in Fahrenheit.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-dynamic-notifications-single_setpoint_min_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">SingleSetpointMinF</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">SINGLE_SETPOINT_MIN_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">SingleSetpointMinF</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-single_setpoint_resolution_c'>SINGLE_SETPOINT_RESOLUTION_C</h2>
-
-<p>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <code>setpoint_single_resolution</code> capability.</p>
-
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the single setpoint resolution in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_resolution_c</code></a> capability. If the parameter is not provided, the default is <code>1</code>.</p>
 <h3 id='thermostat-dynamic-notifications-single_setpoint_resolution_c-name'>Name</h3>
 
-<p><code>SINGLE_SETPOINT_RESOLUTION_C ()</code> </p>
+<p><code>SINGLE_SETPOINT_RESOLUTION_C ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>num</td>
-<td>Default 1</td>
+<td>SINGLE_SETPOINT_RESOLUTION_C</td>
+<td>INT</td>
+<td>1</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_resolution_c</code></a></td>
+<td>Single setpoint resolution in Celsius.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-single_setpoint_resolution_c-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-single_setpoint_resolution_c-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">SingleSetpointResolutionC</span> <span class="o">=</span> <span class="p">.</span><span class="mi">5</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">SINGLE_SETPOINT_RESOLUTION_C</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">SingleSetpointResolutionC</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-single_setpoint_resolution_f'>SINGLE_SETPOINT_RESOLUTION_F</h2>
-
-<p>Indicates the increments that the setpoint will follow, such as .2, .5, 1, 2, 5, etc.  Note that .2 is the lowest F resolution supported.</p>
-
+<p>An optional parameter included in a [<code>DYNAMIC_CAPABILITIES_CHANGED</code>][1] notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the single setpoint resolution in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding [<code>setpoint_single_resolution_f</code>][2] capability. If the parameter is not provided, the default is <code>1</code>.</p>
 <h3 id='thermostat-dynamic-notifications-single_setpoint_resolution_f-name'>Name</h3>
 
-<p><code>SINGLE_SETPOINT_RESOLUTION_F ()</code> </p>
+<p><code>SINGLE_SETPOINT_RESOLUTION_F ()</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>num</td>
-<td>Default 1</td>
+<td>SINGLE_SETPOINT_RESOLUTION_F</td>
+<td>INT</td>
+<td>1</td>
+<td>[<code>setpoint_single_resolution_f</code>][2]</td>
+<td>Single setpoint resolution in Fahrenheit.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-single_setpoint_resolution_f-returns'>Returns</h3>
+<p><h3 id='thermostat-dynamic-notifications-single_setpoint_resolution_f-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">SingleSetpointResolutionF</span> <span class="o">=</span> <span class="mi">1</span></p>
 
-<p><code>None</code></p>
+<p><span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">SINGLE_SETPOINT_RESOLUTION_F</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">SingleSetpointResolutionF</span><span class="p">)</span>
+<span class="p">}</span></p>
+
+<p><span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">&quot;DYNAMIC_CAPABILITIES_CHANGED&quot;</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">&quot;NOTIFY&quot;</span><span class="p">)</span></p>
+
+<p><span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify(&quot;DYNAMIC_CAPABILITIES_CHANGED&quot;, Params, BindingID)</span>
+</code></pre></div></p>
 <h1 id='thermostat-proxy-commands'>Thermostat Proxy Commands</h1>
 
 <h2 id='thermostat-proxy-commands-set_preset'>SET_PRESET</h2>
