@@ -21,7 +21,10 @@ local Params = {
     DAY_INDEX = "0"
 }
 
-SendNotify("SCHEDULE_ENTRY_DELETED", Params, BindingID)
+C4:SendToProxy(bindingID, "SCHEDULE_ENTRY_DELETED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("SCHEDULE_ENTRY_DELETED", Params, BindingID)
 ```
 
 

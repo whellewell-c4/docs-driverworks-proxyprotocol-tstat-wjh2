@@ -29,7 +29,10 @@ local Params = {
     MODES = tostring(ModesStr)
 }
 
-SendNotify("ALLOWED_HOLD_MODES_CHANGED", Params, BindingID)
+C4:SendToProxy(bindingID, "ALLOWED_HOLD_MODES_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("ALLOWED_HOLD_MODES_CHANGED", Params, BindingID)
 ```
 
 

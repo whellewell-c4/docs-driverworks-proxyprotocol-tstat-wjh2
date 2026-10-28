@@ -1,17 +1,25 @@
-## CAN\_HEAT
+## CAN_HEAT
 
-Boolean to enable/disable `can_heat` capability. If the device supports this feature, default is False.
-
+An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notification received by the proxy via a `C4:SendToProxy` call. It is a string-based Boolean value (`True`/`False`) used to enable or disable the [`can_heat`][2] capability. When set to `True`, the device reports that Heat mode is supported; when set to `False`, the capability is disabled. If the parameter is not provided, the default is `True`.
 
 ### Name
 
 `CAN_HEAT ()`
 
+| Parameter | Type | Default | Capability | Description |
+| --------- | ---- | ------- | ---------- | ----------- |
+| CAN_HEAT | BOOL | True | [`can_heat`][2] | True/False. Thermostat supports heating. |
 
-| Parameter | Type | Description                                       |
-| --------- | ---- | ------------------------------------------------- |
-|           | BOOL | True/False. enable/disable `can_heat` capability. |
+### Lua example
+```lua
+local CanHeat = true
 
-### Returns
+local Params = {
+    CAN_HEAT = tostring(CanHeat)
+}
 
-`None`
+C4:SendToProxy(bindingID, "DYNAMIC_CAPABILITIES_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)
+```

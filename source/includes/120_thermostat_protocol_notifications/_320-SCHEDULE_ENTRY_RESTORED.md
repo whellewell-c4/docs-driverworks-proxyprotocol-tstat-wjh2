@@ -19,18 +19,34 @@ New in 4.3.0.
 ### Lua example
 
 ```lua
-SendNotify("SCHEDULE_ENTRY_RESTORED", {
-    ENTRY_INDEX = "2",
-    DAY_INDEX = "1"
-})
+local entryIndex = 2
+local dayIndex = 1
+
+local Params = {
+	ENTRY_INDEX = tostring(entryIndex),
+    DAY_INDEX = tostring(dayIndex),
+}
+
+C4:SendToProxy(bindingID, "SCHEDULE_ENTRY_RESTORED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("SCHEDULE_ENTRY_RESTORED", Params, BindingID)
 ```
 
 When `DAY_INDEX` is omitted:
 
 ```lua
-SendNotify("SCHEDULE_ENTRY_RESTORED", {
-    ENTRY_INDEX = "2"
-})
+local entryIndex = 2
+local dayIndex = 1
+
+local Params = {
+	ENTRY_INDEX = tostring(entryIndex),
+}
+
+C4:SendToProxy(bindingID, "SCHEDULE_ENTRY_RESTORED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("SCHEDULE_ENTRY_RESTORED", Params, BindingID)
 ```
 
 This restores the same entry index on every day of the schedule.

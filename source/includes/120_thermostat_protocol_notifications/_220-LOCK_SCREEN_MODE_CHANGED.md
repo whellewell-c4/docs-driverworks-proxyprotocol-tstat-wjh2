@@ -28,7 +28,10 @@ local Params = {
     MODE = "Partially Locked"
 }
 
-SendNotify("LOCK_SCREEN_MODE_CHANGED", Params, BindingID)
+C4:SendToProxy(bindingID, "LOCK_SCREEN_MODE_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("LOCK_SCREEN_MODE_CHANGED", Params, BindingID)
 ```
 
 

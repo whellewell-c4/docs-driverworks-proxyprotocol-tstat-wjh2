@@ -18,20 +18,36 @@ New in 4.3.0.
 ### Lua example
 
 ```lua
-SendNotify("SCHEDULE_ENTRY_NAME_CHANGED", {
-    ENTRY_INDEX = "2",
-    DAY_INDEX = "1",
-    ENTRY_NAME = "Wake"
-})
+local entryIndex = 2
+local dayIndex = 1
+
+local Params = {
+	ENTRY_INDEX = tostring(entryIndex),
+    DAY_INDEX = tostring(dayIndex),
+	ENTRY_NAME = tostring("Wake")
+}
+
+C4:SendToProxy(bindingID, "SCHEDULE_ENTRY_NAME_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("SCHEDULE_ENTRY_NAME_CHANGED", Params, BindingID)
 ```
 
 When `DAY_INDEX` is omitted:
 
 ```lua
-SendNotify("SCHEDULE_ENTRY_NAME_CHANGED", {
-    ENTRY_INDEX = "2",
-    ENTRY_NAME = "Wake"
-})
+local entryIndex = 2
+local dayIndex = 1
+
+local Params = {
+	ENTRY_INDEX = tostring(entryIndex),
+	ENTRY_NAME = tostring("Wake")
+}
+
+C4:SendToProxy(bindingID, "SCHEDULE_ENTRY_NAME_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("SCHEDULE_ENTRY_NAME_CHANGED", Params, BindingID)
 ```
 
 
