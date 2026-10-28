@@ -1,20 +1,30 @@
-## HEAT\_SETPOINT\_RESOLUTION\_F
+## HEAT_SETPOINT_RESOLUTION_F
 
-What increment to use (ie 1,3,5,10,etc), will do the same thing as the [`setpoint_heat_resolution`][1] capability.
-
+An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notification received by the proxy via a `C4:SendToProxy` call. It is a string-based integer value used to update the heat setpoint resolution in Fahrenheit. The value is passed through the payload as a string representation of the number and is applied to the corresponding [`setpoint_heat_resolution_f`][2] capability. If the parameter is not provided, the default is `1`.
 
 ### Name
 
 `HEAT_SETPOINT_RESOLUTION_F ()`
 
+| Parameter                  | Type | Default | Capability                        | Description                             |
+| -------------------------- | ---- | ------- | --------------------------------- | --------------------------------------- |
+| HEAT_SETPOINT_RESOLUTION_F | INT  | 1       | [`setpoint_heat_resolution_f`][2] | Heat setpoint resolution in Fahrenheit. |
 
-| Parameter | Description |
-| --------- | ----------- |
-| num       | Default 1   |
+### Lua example
+```lua
+local HeatSetpointResolutionF = 2
+
+local Params = {
+    HEAT_SETPOINT_RESOLUTION_F = tostring(HeatSetpointResolutionF)
+}
+
+C4:SendToProxy(bindingID, "DYNAMIC_CAPABILITIES_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)
+```
 
 
-### Returns
 
-`None`
-
-[1]:	https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities
+[1]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat
+[2]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities

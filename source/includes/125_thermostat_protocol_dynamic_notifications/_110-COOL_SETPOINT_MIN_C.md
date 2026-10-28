@@ -1,19 +1,30 @@
-## COOL\_SETPOINT\_MIN\_C
+## COOL_SETPOINT_MIN_C
 
+An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notification received by the proxy via a `C4:SendToProxy` call. It is a string-based integer value used to update the minimum cool setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding [`setpoint_cool_min_c`][2] capability. If the parameter is not provided, the default is `5`.
 
 ### Name
 
-`COOL_SETPOINT_ MIN_C ()`
+`COOL_SETPOINT_MIN_C ()`
+
+| Parameter           | Type | Default | Capability                 | Range                                  | Description                       |
+| ------------------- | ---- | ------- | -------------------------- | -------------------------------------- | --------------------------------- |
+| COOL_SETPOINT_MIN_C | INT  | 5       | [`setpoint_cool_min_c`][2] | 0-100 and > [`setpoint_cool_max_c`][2] | Minimum cool setpoint in Celsius. |
+
+### Lua example
+```lua
+local CoolSetpointMinC = 10
+
+local Params = {
+    COOL_SETPOINT_MIN_C = tostring(CoolSetpointMinC)
+}
+
+C4:SendToProxy(bindingID, "DYNAMIC_CAPABILITIES_CHANGED", Params, "NOTIFY")
+
+-- if using the template code you can use SendNotify
+--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)
+```
 
 
-| Parameter        | Type | Description                                                                               |
-| ---------------- | ---- | ----------------------------------------------------------------------------------------- |
-| Minimum Setpoint | INT  | 0-100 that will do the same thing as the [`setpoint_cool_min`][1] capability, default 100 |
 
-
-### Returns
-
-`None`
-
-
-[1]:	https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities
+[1]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat
+[2]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities

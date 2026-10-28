@@ -6,9 +6,9 @@ An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notifica
 
 `CAN_HEAT ()`
 
-| Parameter | Type | Default | Capability | Description |
-| --------- | ---- | ------- | ---------- | ----------- |
-| CAN_HEAT | BOOL | True | [`can_heat`][2] | True/False. Thermostat supports heating. |
+| Parameter | Type | Default | Capability      | Description                              |
+| --------- | ---- | ------- | --------------- | ---------------------------------------- |
+| CAN_HEAT  | BOOL | True    | [`can_heat`][2] | True/False. Thermostat supports heating. |
 
 ### Lua example
 ```lua
@@ -23,3 +23,8 @@ C4:SendToProxy(bindingID, "DYNAMIC_CAPABILITIES_CHANGED", Params, "NOTIFY")
 -- if using the template code you can use SendNotify
 --SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)
 ```
+
+
+
+[1]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat
+[2]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities

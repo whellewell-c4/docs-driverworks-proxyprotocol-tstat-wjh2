@@ -30,5 +30,5 @@ C4:SendToProxy(bindingID, "DYNAMIC_CAPABILITIES_CHANGED", Params, "NOTIFY")
 
 
 [1]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat
-[2]:	https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities
+[2]: https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities
 
