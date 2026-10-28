@@ -1456,7 +1456,10 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
     <span class="n">MODES</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">ModesStr</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"ALLOWED_FAN_MODES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"ALLOWED_FAN_MODES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("ALLOWED_FAN_MODES_CHANGED", Params, BindingID)</span>
 </code></pre></div><h3 id='thermostat-notifications-allowed_fan_modes-_changed-returns'>Returns</h3>
 
 <p><code>None</code></p>
@@ -1497,7 +1500,10 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
     <span class="n">MODES</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">ModesStr</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"ALLOWED_HOLD_MODES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"ALLOWED_HOLD_MODES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("ALLOWED_HOLD_MODES_CHANGED", Params, BindingID)</span>
 </code></pre></div><h3 id='thermostat-notifications-allowed_hold_modes_changed-returns'>Returns</h3>
 
 <p>None.</p>
@@ -1674,76 +1680,379 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 
 <h2 id='thermostat-notifications-dynamic_capabilities_changed'>DYNAMIC_CAPABILITIES_CHANGED</h2>
 
-<p>Dynamic Capabilities is a way for a protocol driver to send updates about some thermostat capabilities that can be changed when settings change on the hardware.  An example would be a thermostat that has a humidifier added would need to tell the proxy it can now do humidification as well as what the min, max, resolution and other changes are for the setpoint. </p>
+<p>Dynamic Capabilities is a way for a protocol driver to send updates about some thermostat capabilities that can be changed when settings change on the hardware.  An example would be a thermostat that has a humidifier added and would need to tell the proxy it can now do humidification as well as what the min, max, resolution and other changes are for the setpoint. </p>
 
-<p>Note the following is an example of the notification. For a complete list of Thermostat capabilities that can be passed as parameters, please see the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities">Thermostat Proxy Capabilities</a> section.</p>
+<p>There are two types of capabilities, static and dynamic. </p>
+
+<p>Static capabilities are defined in the <code>&lt;capabilities&gt;</code> section of the driver&#39;s driver.xml file and are immutable. For a complete list of Thermostat capabilities, please see the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities">Thermostat Proxy Capabilities</a> section.</p>
+
+<p>Dynamic capabilities, as discussed in this section, are updated by the driver through the C4:SendToProxy() command. See the Lua Example below.  A Lua table needs to be created defining the parameter name and it&#39;s value.  Dynamic capabilities are not required to be in the driver.xml file. If it is not included it will initialize with the default value and can be updated at any time by the driver. If the thermostat device does not support changing the configuration then it is recommended it be used as a static capability. Listed in the table below are all of the possible <code>DYNAMIC_CAPABILITIES_CHANGED</code> notification parameters. The Capability column lists the capability associated with the notification that will be updated. For a more detailed list of the Dynamic Capability Notifications, please see  <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-protocol-dynamic-notifications">Thermostat Dynamic Notifications</a> section.</p>
 
 <h3 id='thermostat-notifications-dynamic_capabilities_changed-name'>Name</h3>
 
 <p><code>DYNAMIC_CAPABILITIES_CHANGED ()</code></p>
 
+<h3 id='thermostat-notifications-dynamic_capabilities_changed-dynamic-capability-notifications'>Dynamic Capability Notifications</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Description</th>
+<th>Default</th>
+<th>Capability</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><code>CAN_AUTO</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_do_auto</code></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><code>CAN_CHANGE_SCALE</code></td>
+<td>boolean</td>
+<td>true</td>
+<td><code>can_change_scale</code></td>
+</tr>
+<tr>
+<td><code>CAN_COOL</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_cool</code></td>
+</tr>
+<tr>
+<td><code>CAN_DEHUMIDIFY</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_dehumidify</code></td>
+</tr>
+<tr>
+<td><code>CAN_FIXED_SCHEDULE_AND_PRESETS</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_fixed_schedule_and_presets</code></td>
+</tr>
+<tr>
+<td><code>CAN_HEAT</code></td>
+<td>boolean</td>
+<td>true</td>
+<td><code>can_heat</code></td>
+</tr>
+<tr>
+<td><code>CAN_HUMIDIFY</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_humidify</code></td>
+</tr>
+<tr>
+<td><code>CAN_LOCK_SCREEN</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_lock_screen</code></td>
+</tr>
+<tr>
+<td><code>CAN_PRESET</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_preset</code></td>
+</tr>
+<tr>
+<td><code>CAN_PRESET_SCHEDULE</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>can_preset_schedule</code></td>
+</tr>
+<tr>
+<td><code>COOL_SETPOINT_MAX_C</code></td>
+<td>double as string</td>
+<td>100</td>
+<td><code>setpoint_cool_max_c</code></td>
+</tr>
+<tr>
+<td><code>COOL_SETPOINT_MAX_F</code></td>
+<td>double as string</td>
+<td>100</td>
+<td><code>setpoint_cool_max_f</code></td>
+</tr>
+<tr>
+<td><code>COOL_SETPOINT_MIN_C</code></td>
+<td>double as string</td>
+<td>0</td>
+<td><code>setpoint_cool_min_c</code></td>
+</tr>
+<tr>
+<td><code>COOL_SETPOINT_MIN_F</code></td>
+<td>double as string</td>
+<td>0</td>
+<td><code>setpoint_cool_min_f</code></td>
+</tr>
+<tr>
+<td><code>COOL_SETPOINT_RESOLUTION_C</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>setpoint_cool_resolution_c</code></td>
+</tr>
+<tr>
+<td><code>COOL_SETPOINT_RESOLUTION_F</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>setpoint_cool_resolution_f</code></td>
+</tr>
+<tr>
+<td><code>DEHUMIDIFY_SETPOINT_MAX</code></td>
+<td>integer</td>
+<td>100</td>
+<td><code>setpoint_dehumidify_max</code></td>
+</tr>
+<tr>
+<td><code>DEHUMIDIFY_SETPOINT_MIN</code></td>
+<td>integer</td>
+<td>0</td>
+<td><code>setpoint_dehumidify_min</code></td>
+</tr>
+<tr>
+<td><code>DEHUMIDIFY_SETPOINT_RESOLUTION</code></td>
+<td>integer</td>
+<td>1</td>
+<td><code>setpoint_dehumidify_resolution</code></td>
+</tr>
+<tr>
+<td><code>HAS_EXTRAS</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>has_extras</code></td>
+</tr>
+<tr>
+<td><code>HAS_HEAT_PUMP</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>has_heat_pump</code></td>
 </tr>
 <tr>
 <td><code>HAS_HUMIDITY</code></td>
-<td>BOOL</td>
-<td>boolean to enable/disable <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>has_humidity</code></a> capability, if the device supports this feature, default is false.</td>
+<td>boolean</td>
+<td>false</td>
+<td><code>has_humidity</code></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><code>HAS_OUTDOOR_TEMPERATURE</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>has_outdoor_temperature</code></td>
 </tr>
 <tr>
-<td><code>HUMIDIFY_SETPOINT_MIN</code></td>
-<td>INT</td>
-<td>Minimum Setpoint, int 0-100 that will do the same thing as the <a href="hhttps://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_humidify_min</code></a> capability, default 0</td>
+<td><code>HAS_SCHEDULE</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>has_schedule</code></td>
+</tr>
+<tr>
+<td><code>HAS_SINGLE_SETPOINT</code></td>
+<td>boolean</td>
+<td>false</td>
+<td><code>has_single_setpoint</code></td>
+</tr>
+<tr>
+<td><code>HAS_TEMPERATURE</code></td>
+<td>boolean</td>
+<td>true</td>
+<td><code>has_temperature</code></td>
+</tr>
+<tr>
+<td><code>HEAT_SETPOINT_MAX_C</code></td>
+<td>double as string</td>
+<td>100</td>
+<td><code>setpoint_heat_max_c</code></td>
+</tr>
+<tr>
+<td><code>HEAT_SETPOINT_MAX_F</code></td>
+<td>double as string</td>
+<td>100</td>
+<td><code>setpoint_heat_max_f</code></td>
+</tr>
+<tr>
+<td><code>HEAT_SETPOINT_MIN_C</code></td>
+<td>double as string</td>
+<td>0</td>
+<td><code>setpoint_heat_min_c</code></td>
+</tr>
+<tr>
+<td><code>HEAT_SETPOINT_MIN_F</code></td>
+<td>double as string</td>
+<td>0</td>
+<td><code>setpoint_heat_min_f</code></td>
+</tr>
+<tr>
+<td><code>HEAT_SETPOINT_RESOLUTION_C</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>setpoint_heat_resolution_c</code></td>
+</tr>
+<tr>
+<td><code>HEAT_SETPOINT_RESOLUTION_F</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>setpoint_heat_resolution_f</code></td>
+</tr>
+<tr>
+<td><code>HEATCOOL_SETPOINTS_DEADBAND_C</code></td>
+<td>double as string</td>
+<td>2</td>
+<td><code>setpoint_heatcool_deadband_c</code></td>
+</tr>
+<tr>
+<td><code>HEATCOOL_SETPOINTS_DEADBAND_F</code></td>
+<td>double as string</td>
+<td>2</td>
+<td><code>setpoint_heatcool_deadband_f</code></td>
+</tr>
+<tr>
+<td><code>HOLD_UNTIL_MODE</code></td>
+<td>string</td>
+<td><code>date,time</code></td>
+<td><code>hold_until_mode</code></td>
+</tr>
+<tr>
+<td><code>HOLD_UNTIL_RESOLUTION</code></td>
+<td>integer</td>
+<td>5</td>
+<td><code>hold_until_resolution</code></td>
 </tr>
 <tr>
 <td><code>HUMIDIFY_SETPOINT_MAX</code></td>
-<td>INT</td>
-<td>Minimum Setpoint, int 0-100 that will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_humidify_max</code></a> capability, default 100</td>
+<td>integer</td>
+<td>100</td>
+<td><code>setpoint_humidify_max</code></td>
+</tr>
+<tr>
+<td><code>HUMIDIFY_SETPOINT_MIN</code></td>
+<td>integer</td>
+<td>0</td>
+<td><code>setpoint_humidify_min</code></td>
 </tr>
 <tr>
 <td><code>HUMIDIFY_SETPOINT_RESOLUTION</code></td>
-<td>INT</td>
-<td>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <code>setpoint_humidify_resolution</code> capability, default 1</td>
+<td>integer</td>
+<td>1</td>
+<td><code>setpoint_humidify_resolution</code></td>
 </tr>
 <tr>
-<td><code>HUMIDITY_SETPOINT_DEADBAND</code></td>
-<td>INT</td>
-<td>What the deadband between humidify and dehumidify is, will do the same thing as the <code>setpoint_humidity_deadband</code> capability, default 10</td>
+<td><code>HUMIDITY_RESOLUTION</code></td>
+<td>integer</td>
+<td>1</td>
+<td><code>humidity_resolution</code></td>
 </tr>
 <tr>
-<td><code>DEHUMIDIFY_SETPOINT_MIN</code>:</td>
-<td>INT</td>
-<td>Minimum Setpoint, int 0-100 that will do the same thing as the <code>setpoint_dehumidify_min</code> capability, default 0</td>
+<td><code>HUMIDITY_SETPOINTS_DEADBAND</code></td>
+<td>integer</td>
+<td>10</td>
+<td><code>setpoint_humidity_deadband</code></td>
+</tr>
+<tr>
+<td><code>LOCK_SCREEN_MODES</code></td>
+<td>string</td>
+<td>&quot;&quot;</td>
+<td><code>lock_screen_modes</code></td>
+</tr>
+<tr>
+<td><code>OUTDOOR_TEMPERATURE_RESOLUTION_C</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>outdoor_temperature_resolution_c</code></td>
+</tr>
+<tr>
+<td><code>OUTDOOR_TEMPERATURE_RESOLUTION_F</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>outdoor_temperature_resolution_f</code></td>
+</tr>
+<tr>
+<td><code>SINGLE_SETPOINT_MAX_C</code></td>
+<td>double as string</td>
+<td>100</td>
+<td><code>setpoint_single_max_c</code></td>
+</tr>
+<tr>
+<td><code>SINGLE_SETPOINT_MAX_F</code></td>
+<td>double as string</td>
+<td>100</td>
+<td><code>setpoint_single_max_f</code></td>
+</tr>
+<tr>
+<td><code>SINGLE_SETPOINT_MIN_C</code></td>
+<td>double as string</td>
+<td>0</td>
+<td><code>setpoint_single_min_c</code></td>
+</tr>
+<tr>
+<td><code>SINGLE_SETPOINT_MIN_F</code></td>
+<td>double as string</td>
+<td>0</td>
+<td><code>setpoint_single_min_f</code></td>
+</tr>
+<tr>
+<td><code>SINGLE_SETPOINT_RESOLUTION_C</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>setpoint_single_resolution_c</code></td>
+</tr>
+<tr>
+<td><code>SINGLE_SETPOINT_RESOLUTION_F</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>setpoint_single_resolution_f</code></td>
+</tr>
+<tr>
+<td><code>TEMPERATURE_MAX_C</code></td>
+<td>double as string</td>
+<td>50</td>
+<td><code>current_temperature_max_c</code></td>
+</tr>
+<tr>
+<td><code>TEMPERATURE_MAX_F</code></td>
+<td>double as string</td>
+<td>120</td>
+<td><code>current_temperature_max_f</code></td>
+</tr>
+<tr>
+<td><code>TEMPERATURE_MIN_C</code></td>
+<td>double as string</td>
+<td>-40</td>
+<td><code>current_temperature_min_c</code></td>
+</tr>
+<tr>
+<td><code>TEMPERATURE_MIN_F</code></td>
+<td>double as string</td>
+<td>-40</td>
+<td><code>current_temperature_min_f</code></td>
+</tr>
+<tr>
+<td><code>TEMPERATURE_RESOLUTION_C</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>current_temperature_resolution_c</code></td>
+</tr>
+<tr>
+<td><code>TEMPERATURE_RESOLUTION_F</code></td>
+<td>double as string</td>
+<td>1</td>
+<td><code>current_temperature_resolution_f</code></td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-notifications-dynamic_capabilities_changed-returns'>Returns</h3>
+<h3 id='thermostat-notifications-dynamic_capabilities_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanHeat</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_HEAT</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanHeat</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-notifications-extras_setup_changed'>EXTRAS_SETUP_CHANGED</h2>
-
 <p>Update the Extras Setup, displayed in the UI </p>
-
 <h3 id='thermostat-notifications-extras_setup_changed-name'>Name</h3>
 
 <p><code>EXTRAS_SETUP_CHANGED ()</code></p>
@@ -2091,7 +2400,10 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
     <span class="n">MODE</span> <span class="o">=</span> <span class="s2">"Partially Locked"</span>
 <span class="p">}</span>
 
-<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"LOCK_SCREEN_MODE_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"LOCK_SCREEN_MODE_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("LOCK_SCREEN_MODE_CHANGED", Params, BindingID)</span>
 </code></pre></div><h3 id='thermostat-notifications-lock_screen_mode_changed-returns'>Returns</h3>
 
 <p>None.</p>
@@ -2318,7 +2630,10 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
     <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="s2">"0"</span>
 <span class="p">}</span>
 
-<span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_DELETED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">BindingID</span><span class="p">)</span>
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"SCHEDULE_ENTRY_DELETED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("SCHEDULE_ENTRY_DELETED", Params, BindingID)</span>
 </code></pre></div><h3 id='thermostat-notifications-schedule_entry_changed-returns'>Returns</h3>
 
 <p>None.</p>
@@ -2341,17 +2656,33 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 
 <p><code>None</code></p>
 
-<h3 id='thermostat-notifications-schedule_entry_name_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_NAME_CHANGED"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
-    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="s2">"1"</span><span class="p">,</span>
-    <span class="n">ENTRY_NAME</span> <span class="o">=</span> <span class="s2">"Wake"</span>
-<span class="p">})</span>
+<h3 id='thermostat-notifications-schedule_entry_name_changed-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">entryIndex</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kd">local</span> <span class="n">dayIndex</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryIndex</span><span class="p">),</span>
+    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">dayIndex</span><span class="p">),</span>
+    <span class="n">ENTRY_NAME</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="s2">"Wake"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"SCHEDULE_ENTRY_NAME_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("SCHEDULE_ENTRY_NAME_CHANGED", Params, BindingID)</span>
 </code></pre></div>
 <p>When <code>DAY_INDEX</code> is omitted:</p>
-<div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_NAME_CHANGED"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
-    <span class="n">ENTRY_NAME</span> <span class="o">=</span> <span class="s2">"Wake"</span>
-<span class="p">})</span>
+<div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">entryIndex</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kd">local</span> <span class="n">dayIndex</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryIndex</span><span class="p">),</span>
+    <span class="n">ENTRY_NAME</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="s2">"Wake"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"SCHEDULE_ENTRY_NAME_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("SCHEDULE_ENTRY_NAME_CHANGED", Params, BindingID)</span>
 </code></pre></div>
 <p>This applies the rename to the same entry index on every day of the schedule.</p>
 <h3 id='thermostat-notifications-schedule_entry_name_changed-returns'>Returns</h3>
@@ -2382,15 +2713,31 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 </ul></li>
 </ul>
 
-<h3 id='thermostat-notifications-schedule_entry_restored-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_RESTORED"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span><span class="p">,</span>
-    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="s2">"1"</span>
-<span class="p">})</span>
+<h3 id='thermostat-notifications-schedule_entry_restored-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">entryIndex</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kd">local</span> <span class="n">dayIndex</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryIndex</span><span class="p">),</span>
+    <span class="n">DAY_INDEX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">dayIndex</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"SCHEDULE_ENTRY_RESTORED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("SCHEDULE_ENTRY_RESTORED", Params, BindingID)</span>
 </code></pre></div>
 <p>When <code>DAY_INDEX</code> is omitted:</p>
-<div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">SendNotify</span><span class="p">(</span><span class="s2">"SCHEDULE_ENTRY_RESTORED"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="s2">"2"</span>
-<span class="p">})</span>
+<div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">entryIndex</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kd">local</span> <span class="n">dayIndex</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ENTRY_INDEX</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryIndex</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"SCHEDULE_ENTRY_RESTORED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("SCHEDULE_ENTRY_RESTORED", Params, BindingID)</span>
 </code></pre></div>
 <p>This restores the same entry index on every day of the schedule.</p>
 <h3 id='thermostat-notifications-schedule_entry_restored-returns'>Returns</h3>
@@ -2528,7 +2875,7 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 
 <h2 id='thermostat-dynamic-notifications-can_auto'>CAN_AUTO</h2>
 
-<p>Boolean to enable/disable <code>can_auto</code> capability. If the device supports this feature, default is False.</p>
+<p>An optional  parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_do_auto</code></a> capability. When set to <code>True</code>, the device reports that Auto mode is supported; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 
 <h3 id='thermostat-dynamic-notifications-can_auto-name'>Name</h3>
 
@@ -2538,24 +2885,33 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>CAN_AUTO</td>
 <td>BOOL</td>
-<td>True/False. Supports auto heating and cooling.</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_do_auto</code></a></td>
+<td>True/False. Thermostat supports auto heating and cooling.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-can_auto-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-can_auto-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanDoAuto</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_AUTO</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanDoAuto</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_cool'>CAN_COOL</h2>
-
-<p>Boolean to enable/disable <code>can_cool</code> capability. If the device supports this feature, default is False.</p>
-
+<p>An optional  parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_cool</code></a> capability. When set to <code>True</code>, the device reports that Cool mode is supported; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_cool-name'>Name</h3>
 
 <p><code>CAN_COOL ()</code></p>
@@ -2564,24 +2920,33 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>CAN_COOL</td>
 <td>BOOL</td>
-<td>True/False. Supports cooling.</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_cool</code></a></td>
+<td>True/False. Thermostat supports cooling.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-can_cool-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-can_cool-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanCool</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_COOL</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanCool</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_dehumidify'>CAN_DEHUMIDIFY</h2>
-
-<p>Boolean to enable/disable <code>can_dehumidify</code> capability. If the device supports this feature, default is False.</p>
-
+<p>An optional parameter included in a [<code>DYNAMIC_CAPABILITIES_CHANGED</code>][1] notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the [<code>can_dehumidify</code>][2] capability. When set to <code>True</code>, the thermostat supports dehumidification; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_dehumidify-name'>Name</h3>
 
 <p><code>CAN_DEHUMIDIFY ()</code></p>
@@ -2590,24 +2955,33 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>CAN_DEHUMIDIFY</td>
 <td>BOOL</td>
-<td>True/False.  Enable/disable <code>can_dehumidify</code> capability.</td>
+<td>False</td>
+<td>[<code>can_dehumidify</code>][2]</td>
+<td>True/False. Thermostat supports dehumidification.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-can_dehumidify-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-can_dehumidify-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanDehumidify</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_DEHUMIDIFY</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanDehumidify</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_heat'>CAN_HEAT</h2>
-
-<p>Boolean to enable/disable <code>can_heat</code> capability. If the device supports this feature, default is False.</p>
-
+<p>An optional parameter included in a [<code>DYNAMIC_CAPABILITIES_CHANGED</code>][1] notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the [<code>can_heat</code>][2] capability. When set to <code>True</code>, the device reports that Heat mode is supported; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>True</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_heat-name'>Name</h3>
 
 <p><code>CAN_HEAT ()</code></p>
@@ -2616,24 +2990,33 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
+<th>Capability</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>CAN_HEAT</td>
 <td>BOOL</td>
-<td>True/False. enable/disable <code>can_heat</code> capability.</td>
+<td>True</td>
+<td>[<code>can_heat</code>][2]</td>
+<td>True/False. Thermostat supports heating.</td>
 </tr>
 </tbody></table>
 
-<h3 id='thermostat-dynamic-notifications-can_heat-returns'>Returns</h3>
+<h3 id='thermostat-dynamic-notifications-can_heat-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanHeat</span> <span class="o">=</span> <span class="kc">true</span>
 
-<p><code>None</code></p>
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_HEAT</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanHeat</span><span class="p">)</span>
+<span class="p">}</span>
 
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_humidify'>CAN_HUMIDIFY</h2>
-
 <p>Boolean to enable/disable <code>can_humidify</code> capability. If the device supports this feature, default is False.</p>
-
 <h3 id='thermostat-dynamic-notifications-can_humidify-name'>Name</h3>
 
 <p><code>CAN_HUMIDIFY ()</code></p>
