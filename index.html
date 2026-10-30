@@ -641,6 +641,18 @@
                     <a href="#thermostat-dynamic-notifications-hold_until_resolution" class="toc-h2 toc-link" data-title="HOLD_UNTIL_RESOLUTION">HOLD_UNTIL_RESOLUTION</a>
                   </li>
                   <li>
+                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_deadband" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_DEADBAND">HUMIDITY_SETPOINT_DEADBAND</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_max" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_MAX">HUMIDITY_SETPOINT_MAX</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_min" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_MIN">HUMIDITY_SETPOINT_MIN</a>
+                  </li>
+                  <li>
+                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_resolution" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_RESOLUTION">HUMIDITY_SETPOINT_RESOLUTION</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-dynamic-notifications-single_setpoint_max_c" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MAX_C">SINGLE_SETPOINT_MAX_C</a>
                   </li>
                   <li>
@@ -4316,8 +4328,104 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <span class="c1">-- if using the template code you can use SendNotify</span>
 <span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
 </code></pre></div>
+<h2 id='thermostat-dynamic-notifications-humidity_setpoint_deadband'>HUMIDITY_SETPOINT_DEADBAND</h2>
+<p>What the deadband between humidify and dehumidify is, will do the same thing as the <code>setpoint_humidity_deadband</code> capability.</p>
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_deadband-name'>Name</h3>
+
+<p><code>HUMIDITY_SETPOINT_DEADBAND ()</code> </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>num</td>
+<td>Default 10</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_deadband-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-dynamic-notifications-humidity_setpoint_max'>HUMIDITY_SETPOINT_MAX</h2>
+
+<p>Minimum Setpoint, int 0-100 that will do the same thing as the <code>setpoint_humidify_max</code> capability, </p>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_max-name'>Name</h3>
+
+<p><code>HUMIDITY_SETPOINT_MAX ()</code> </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>num</td>
+<td>Default 100</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_max-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-dynamic-notifications-humidity_setpoint_min'>HUMIDITY_SETPOINT_MIN</h2>
+
+<p>Minimum Setpoint, int 0-100 that will do the same thing as the <code>setpoint_humidify_min</code> capability, </p>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_min-name'>Name</h3>
+
+<p><code>HUMIDITY_SETPOINT_MIN ()</code> </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>num</td>
+<td>Default 0</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_min-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
+<h2 id='thermostat-dynamic-notifications-humidity_setpoint_resolution'>HUMIDITY_SETPOINT_RESOLUTION</h2>
+
+<p>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_humidify_resolution</code></a> capability.</p>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_resolution-name'>Name</h3>
+
+<p><code>HUMIDITY_SETPOINT_RESOLUTION ()</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>num</td>
+<td>Default 1</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-dynamic-notifications-humidity_setpoint_resolution-returns'>Returns</h3>
+
+<p><code>None</code></p>
+
 <h2 id='thermostat-dynamic-notifications-single_setpoint_max_c'>SINGLE_SETPOINT_MAX_C</h2>
+
 <p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum single setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_c</code></a> capability. If the parameter is not provided, the default is <code>32</code>.</p>
+
 <h3 id='thermostat-dynamic-notifications-single_setpoint_max_c-name'>Name</h3>
 
 <p><code>SINGLE_SETPOINT_MAX_C ()</code></p>
