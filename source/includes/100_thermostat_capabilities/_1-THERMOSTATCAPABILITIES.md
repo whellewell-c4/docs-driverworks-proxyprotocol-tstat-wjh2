@@ -190,6 +190,76 @@ An XML block indicating the default schedule for the device.  Legacy scheduling 
 </schedule_default>
 ```
 
+#### Example of driver providing the schedule default
+
+```lua
+local DEFAULT_SCHEDULE_ENTRIES = {
+    { EntryIndex = 1, TimeHour = 6, TimeMinute = 0, Enabled = true, HeatSetpoint = 70, CoolSetpoint = 74, Scale = "F", CanChangeName = false, CanDelete = false, EntryName = "Wake" },
+    { EntryIndex = 2, TimeHour = 9, TimeMinute = 0, Enabled = true, HeatSetpoint = 71, CoolSetpoint = 75, Scale = "F", CanChangeName = false, CanDelete = false, EntryName = "Away" },
+    { EntryIndex = 3, TimeHour = 16, TimeMinute = 0, Enabled = true, HeatSetpoint = 72, CoolSetpoint = 76, Scale = "F", CanChangeName = false, CanDelete = false, EntryName = "Home" },
+    { EntryIndex = 4, TimeHour = 22, TimeMinute = 0, Enabled = true, HeatSetpoint = 73, CoolSetpoint = 77, Scale = "F", CanChangeName = false, CanDelete = false, EntryName = "Sleep" },
+    { EntryIndex = 5, TimeHour = 22, TimeMinute = 40, Enabled = true, HeatSetpoint = 74, CoolSetpoint = 78, Scale = "F", CanChangeName = true, CanDelete = true, EntryName = "Custom 1" },
+    { EntryIndex = 6, TimeHour = 23, TimeMinute = 0, Enabled = true, HeatSetpoint = 75, CoolSetpoint = 79, Scale = "F", CanChangeName = true, CanDelete = true, EntryName = "Custom 2" }
+}
+
+function SetDefaultSchedule()
+    for dayIndex = 0, 6 do
+        for _, entry in ipairs(DEFAULT_SCHEDULE_ENTRIES) do
+            SetScheduleEntry(
+                dayIndex,
+                entry.EntryIndex,
+                entry.TimeHour,
+                entry.TimeMinute,
+                entry.Enabled,
+                entry.HeatSetpoint,
+                entry.CoolSetpoint,
+                entry.Scale,
+                entry.CanChangeName,
+                entry.CanDelete,
+                entry.EntryName
+            )
+        end
+    end
+end
+
+function SetScheduleEntry(dayOfWeek, entryIndex, timeHour, timeMinute, isEnabled, heatSetpoint, coolSetpoint, scale, canChangeName, canDelete, entryName)
+    LogTrace("SetScheduleEntry  %s %s %s %s %s %s %s %s %s %s %s", tostring(dayOfWeek), tostring(entryIndex), tostring(timeHour), tostring(timeMinute), tostring(isEnabled), tostring(heatSetpoint), tostring(coolSetpoint), tostring(scale), tostring(canChangeName), tostring(canDelete), tostring(entryName))
+
+    local zeroBasedEntryIndex = tonumber(entryIndex)
+    if(zeroBasedEntryIndex == nil) then
+        zeroBasedEntryIndex = 1
+    end
+    zeroBasedEntryIndex = zeroBasedEntryIndex - 1
+
+    local params = {
+        DayIndex = tostring(dayOfWeek),
+        EntryIndex = tostring(zeroBasedEntryIndex),
+        EnabledFlag = tostring(isEnabled),
+        TimeMinutes = tostring((tonumber(timeHour) or 0) * 60 + (tonumber(timeMinute) or 0)),
+        HeatSetpoint = tostring(heatSetpoint),
+        CoolSetpoint = tostring(coolSetpoint),
+        Units = tostring(scale)
+    }
+
+    if(canChangeName ~= nil) then
+        params.CanChangeName = tostring(toboolean(canChangeName))
+    end
+
+    if(canDelete ~= nil) then
+        params.CanDelete = tostring(toboolean(canDelete))
+    end
+
+    if(entryName ~= nil and tostring(entryName) ~= "") then
+        params.EntryName = tostring(entryName)
+    end
+
+    SendNotify("SCHEDULE_ENTRY_CHANGED", params, 5001)
+
+    if(type(UpdateScheduleEntryCapabilityTracking) == "function") then
+        UpdateScheduleEntryCapabilityTracking(zeroBasedEntryIndex, entryName, canChangeName, canDelete)
+    end
+end
+```
 
 ### schedule_entry
 There is one `<schedule_entry>` for each schedule entry during the day. Each entry attribute defines that entry. The following table describes each of the potential attributes. CanChangeName and CanDelete were added in OS Release 4.3.0.
