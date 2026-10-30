@@ -17,64 +17,64 @@ Dynamic capabilities, as discussed in this section, are updated by the driver th
 
 ### Dynamic Capability Notifications
 
-| Parameter                          | Type             | Default     | Capability                         |
-| ---------------------------------- | ---------------- | ----------- | ---------------------------------- |
-| `CAN_AUTO`                         | boolean          | false       | `can_do_auto`                      |
-| `CAN_CHANGE_SCALE`                 | boolean          | true        | `can_change_scale`                 |
-| `CAN_COOL`                         | boolean          | false       | `can_cool`                         |
-| `CAN_DEHUMIDIFY`                   | boolean          | false       | `can_dehumidify`                   |
-| `CAN_FIXED_SCHEDULE_AND_PRESETS`   | boolean          | false       | `can_fixed_schedule_and_presets`   |
-| `CAN_HEAT`                         | boolean          | true        | `can_heat`                         |
-| `CAN_HUMIDIFY`                     | boolean          | false       | `can_humidify`                     |
-| `CAN_LOCK_SCREEN`                  | boolean          | false       | `can_lock_screen`                  |
-| `CAN_PRESET`                       | boolean          | false       | `can_preset`                       |
-| `CAN_PRESET_SCHEDULE`              | boolean          | false       | `can_preset_schedule`              |
-| `COOL_SETPOINT_MAX_C`              | double as string | 100         | `setpoint_cool_max_c`              |
-| `COOL_SETPOINT_MAX_F`              | double as string | 100         | `setpoint_cool_max_f`              |
-| `COOL_SETPOINT_MIN_C`              | double as string | 0           | `setpoint_cool_min_c`              |
-| `COOL_SETPOINT_MIN_F`              | double as string | 0           | `setpoint_cool_min_f`              |
-| `COOL_SETPOINT_RESOLUTION_C`       | double as string | 1           | `setpoint_cool_resolution_c`       |
-| `COOL_SETPOINT_RESOLUTION_F`       | double as string | 1           | `setpoint_cool_resolution_f`       |
-| `DEHUMIDIFY_SETPOINT_MAX`          | integer          | 100         | `setpoint_dehumidify_max`          |
-| `DEHUMIDIFY_SETPOINT_MIN`          | integer          | 0           | `setpoint_dehumidify_min`          |
-| `DEHUMIDIFY_SETPOINT_RESOLUTION`   | integer          | 1           | `setpoint_dehumidify_resolution`   |
-| `HAS_EXTRAS`                       | boolean          | false       | `has_extras`                       |
-| `HAS_HEAT_PUMP`                    | boolean          | false       | `has_heat_pump`                    |
-| `HAS_HUMIDITY`                     | boolean          | false       | `has_humidity`                     |
-| `HAS_OUTDOOR_TEMPERATURE`          | boolean          | false       | `has_outdoor_temperature`          |
-| `HAS_SCHEDULE`                     | boolean          | false       | `has_schedule`                     |
-| `HAS_SINGLE_SETPOINT`              | boolean          | false       | `has_single_setpoint`              |
-| `HAS_TEMPERATURE`                  | boolean          | true        | `has_temperature`                  |
-| `HEAT_SETPOINT_MAX_C`              | double as string | 100         | `setpoint_heat_max_c`              |
-| `HEAT_SETPOINT_MAX_F`              | double as string | 100         | `setpoint_heat_max_f`              |
-| `HEAT_SETPOINT_MIN_C`              | double as string | 0           | `setpoint_heat_min_c`              |
-| `HEAT_SETPOINT_MIN_F`              | double as string | 0           | `setpoint_heat_min_f`              |
-| `HEAT_SETPOINT_RESOLUTION_C`       | double as string | 1           | `setpoint_heat_resolution_c`       |
-| `HEAT_SETPOINT_RESOLUTION_F`       | double as string | 1           | `setpoint_heat_resolution_f`       |
-| `HEATCOOL_SETPOINTS_DEADBAND_C`    | double as string | 2           | `setpoint_heatcool_deadband_c`     |
-| `HEATCOOL_SETPOINTS_DEADBAND_F`    | double as string | 2           | `setpoint_heatcool_deadband_f`     |
-| `HOLD_UNTIL_MODE`                  | string           | `date,time` | `hold_until_mode`                  |
-| `HOLD_UNTIL_RESOLUTION`            | integer          | 5           | `hold_until_resolution`            |
-| `HUMIDIFY_SETPOINT_MAX`            | integer          | 100         | `setpoint_humidify_max`            |
-| `HUMIDIFY_SETPOINT_MIN`            | integer          | 0           | `setpoint_humidify_min`            |
-| `HUMIDIFY_SETPOINT_RESOLUTION`     | integer          | 1           | `setpoint_humidify_resolution`     |
-| `HUMIDITY_RESOLUTION`              | integer          | 1           | `humidity_resolution`              |
-| `HUMIDITY_SETPOINTS_DEADBAND`      | integer          | 10          | `setpoint_humidity_deadband`       |
-| `LOCK_SCREEN_MODES`                | string           | ""          | `lock_screen_modes`                |
-| `OUTDOOR_TEMPERATURE_RESOLUTION_C` | double as string | 1           | `outdoor_temperature_resolution_c` |
-| `OUTDOOR_TEMPERATURE_RESOLUTION_F` | double as string | 1           | `outdoor_temperature_resolution_f` |
-| `SINGLE_SETPOINT_MAX_C`            | double as string | 100         | `setpoint_single_max_c`            |
-| `SINGLE_SETPOINT_MAX_F`            | double as string | 100         | `setpoint_single_max_f`            |
-| `SINGLE_SETPOINT_MIN_C`            | double as string | 0           | `setpoint_single_min_c`            |
-| `SINGLE_SETPOINT_MIN_F`            | double as string | 0           | `setpoint_single_min_f`            |
-| `SINGLE_SETPOINT_RESOLUTION_C`     | double as string | 1           | `setpoint_single_resolution_c`     |
-| `SINGLE_SETPOINT_RESOLUTION_F`     | double as string | 1           | `setpoint_single_resolution_f`     |
-| `TEMPERATURE_MAX_C`                | double as string | 50          | `current_temperature_max_c`        |
-| `TEMPERATURE_MAX_F`                | double as string | 120         | `current_temperature_max_f`        |
-| `TEMPERATURE_MIN_C`                | double as string | -40         | `current_temperature_min_c`        |
-| `TEMPERATURE_MIN_F`                | double as string | -40         | `current_temperature_min_f`        |
-| `TEMPERATURE_RESOLUTION_C`         | double as string | 1           | `current_temperature_resolution_c` |
-| `TEMPERATURE_RESOLUTION_F`         | double as string | 1           | `current_temperature_resolution_f` |
+| Parameter                          | Type   | Default     | Capability                         |
+| ---------------------------------- | ------ | ----------- | ---------------------------------- |
+| `[CAN_AUTO][3]`                    | BOOL   | false       | `can_do_auto`                      |
+| `CAN_CHANGE_SCALE`                 | BOOL   | true        | `can_change_scale`                 |
+| `CAN_COOL`                         | BOOL   | false       | `can_cool`                         |
+| `CAN_DEHUMIDIFY`                   | BOOL   | false       | `can_dehumidify`                   |
+| `CAN_FIXED_SCHEDULE_AND_PRESETS`   | BOOL   | false       | `can_fixed_schedule_and_presets`   |
+| `CAN_HEAT`                         | BOOL   | true        | `can_heat`                         |
+| `CAN_HUMIDIFY`                     | BOOL   | false       | `can_humidify`                     |
+| `CAN_LOCK_SCREEN`                  | BOOL   | false       | `can_lock_screen`                  |
+| `CAN_PRESET`                       | BOOL   | false       | `can_preset`                       |
+| `CAN_PRESET_SCHEDULE`              | BOOL   | false       | `can_preset_schedule`              |
+| `COOL_SETPOINT_MAX_C`              | INT    | 100         | `setpoint_cool_max_c`              |
+| `COOL_SETPOINT_MAX_F`              | INT    | 100         | `setpoint_cool_max_f`              |
+| `COOL_SETPOINT_MIN_C`              | INT    | 0           | `setpoint_cool_min_c`              |
+| `COOL_SETPOINT_MIN_F`              | INT    | 0           | `setpoint_cool_min_f`              |
+| `COOL_SETPOINT_RESOLUTION_C`       | INT    | 1           | `setpoint_cool_resolution_c`       |
+| `COOL_SETPOINT_RESOLUTION_F`       | INT    | 1           | `setpoint_cool_resolution_f`       |
+| `DEHUMIDIFY_SETPOINT_MAX`          | INT    | 100         | `setpoint_dehumidify_max`          |
+| `DEHUMIDIFY_SETPOINT_MIN`          | INT    | 0           | `setpoint_dehumidify_min`          |
+| `DEHUMIDIFY_SETPOINT_RESOLUTION`   | INT    | 1           | `setpoint_dehumidify_resolution`   |
+| `HAS_EXTRAS`                       | BOOL   | false       | `has_extras`                       |
+| `HAS_HEAT_PUMP`                    | BOOL   | false       | `has_heat_pump`                    |
+| `HAS_HUMIDITY`                     | BOOL   | false       | `has_humidity`                     |
+| `HAS_OUTDOOR_TEMPERATURE`          | BOOL   | false       | `has_outdoor_temperature`          |
+| `HAS_SCHEDULE`                     | BOOL   | false       | `has_schedule`                     |
+| `HAS_SINGLE_SETPOINT`              | BOOL   | false       | `has_single_setpoint`              |
+| `HAS_TEMPERATURE`                  | BOOL   | true        | `has_temperature`                  |
+| `HEATCOOL_SETPOINTS_DEADBAND_C`    | INT    | 2           | `setpoint_heatcool_deadband_c`     |
+| `HEATCOOL_SETPOINTS_DEADBAND_F`    | INT    | 2           | `setpoint_heatcool_deadband_f`     |
+| `HEAT_SETPOINT_MAX_C`              | INT    | 100         | `setpoint_heat_max_c`              |
+| `HEAT_SETPOINT_MAX_F`              | INT    | 100         | `setpoint_heat_max_f`              |
+| `HEAT_SETPOINT_MIN_C`              | INT    | 0           | `setpoint_heat_min_c`              |
+| `HEAT_SETPOINT_MIN_F`              | INT    | 0           | `setpoint_heat_min_f`              |
+| `HEAT_SETPOINT_RESOLUTION_C`       | INT    | 1           | `setpoint_heat_resolution_c`       |
+| `HEAT_SETPOINT_RESOLUTION_F`       | INT    | 1           | `setpoint_heat_resolution_f`       |
+| `HOLD_UNTIL_MODE`                  | STRING | `date,time` | `hold_until_mode`                  |
+| `HOLD_UNTIL_RESOLUTION`            | INT    | 5           | `hold_until_resolution`            |
+| `HUMIDIFY_SETPOINT_MAX`            | INT    | 100         | `setpoint_humidify_max`            |
+| `HUMIDIFY_SETPOINT_MIN`            | INT    | 0           | `setpoint_humidify_min`            |
+| `HUMIDIFY_SETPOINT_RESOLUTION`     | INT    | 1           | `setpoint_humidify_resolution`     |
+| `HUMIDITY_RESOLUTION`              | INT    | 1           | `humidity_resolution`              |
+| `HUMIDITY_SETPOINTS_DEADBAND`      | INT    | 10          | `setpoint_humidity_deadband`       |
+| `LOCK_SCREEN_MODES`                | STRING | ""          | `lock_screen_modes`                |
+| `OUTDOOR_TEMPERATURE_RESOLUTION_C` | INT    | 1           | `outdoor_temperature_resolution_c` |
+| `OUTDOOR_TEMPERATURE_RESOLUTION_F` | INT    | 1           | `outdoor_temperature_resolution_f` |
+| `SINGLE_SETPOINT_MAX_C`            | INT    | 100         | `setpoint_single_max_c`            |
+| `SINGLE_SETPOINT_MAX_F`            | INT    | 100         | `setpoint_single_max_f`            |
+| `SINGLE_SETPOINT_MIN_C`            | INT    | 0           | `setpoint_single_min_c`            |
+| `SINGLE_SETPOINT_MIN_F`            | INT    | 0           | `setpoint_single_min_f`            |
+| `SINGLE_SETPOINT_RESOLUTION_C`     | INT    | 1           | `setpoint_single_resolution_c`     |
+| `SINGLE_SETPOINT_RESOLUTION_F`     | INT    | 1           | `setpoint_single_resolution_f`     |
+| `TEMPERATURE_MAX_C`                | INT    | 50          | `current_temperature_max_c`        |
+| `TEMPERATURE_MAX_F`                | INT    | 120         | `current_temperature_max_f`        |
+| `TEMPERATURE_MIN_C`                | INT    | -40         | `current_temperature_min_c`        |
+| `TEMPERATURE_MIN_F`                | INT    | -40         | `current_temperature_min_f`        |
+| `TEMPERATURE_RESOLUTION_C`         | INT    | 1           | `current_temperature_resolution_c` |
+| `TEMPERATURE_RESOLUTION_F`         | INT    | 1           | `current_temperature_resolution_f` |
 
 
 ### Lua example

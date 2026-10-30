@@ -6,9 +6,9 @@ An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notifica
 
 `HEATCOOL_SETPOINTS_DEADBAND_C ()`
 
-| Parameter | Type | Default | Capability | Range | Description |
-| --------- | ---- | ------- | ---------- | ----- | ----------- |
-| HEATCOOL_SETPOINTS_DEADBAND_C | INT | 2 | [`setpoint_heatcool_deadband_c`][2] |  | Heat/cool deadband in Celsius. |
+| Parameter                     | Type | Default | Capability                          | Range | Description                    |
+| ----------------------------- | ---- | ------- | ----------------------------------- | ----- | ------------------------------ |
+| HEATCOOL_SETPOINTS_DEADBAND_C | INT  | 2       | [`setpoint_heatcool_deadband_c`][2] |       | Heat/cool deadband in Celsius. |
 
 ### Lua example
 ```lua

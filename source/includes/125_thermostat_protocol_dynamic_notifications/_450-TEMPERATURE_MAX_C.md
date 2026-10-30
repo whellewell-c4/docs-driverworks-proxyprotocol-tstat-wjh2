@@ -6,9 +6,9 @@ An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notifica
 
 `TEMPERATURE_MAX_C ()`
 
-| Parameter | Type | Default | Capability | Range | Description |
-| --------- | ---- | ------- | ---------- | ----- | ----------- |
-| TEMPERATURE_MAX_C | INT | 50 | [`current_temperature_max_c`][2] |  | Maximum current temperature in Celsius. |
+| Parameter         | Type | Default | Capability                       | Range | Description                             |
+| ----------------- | ---- | ------- | -------------------------------- | ----- | --------------------------------------- |
+| TEMPERATURE_MAX_C | INT  | 50      | [`current_temperature_max_c`][2] |       | Maximum current temperature in Celsius. |
 
 ### Lua example
 ```lua

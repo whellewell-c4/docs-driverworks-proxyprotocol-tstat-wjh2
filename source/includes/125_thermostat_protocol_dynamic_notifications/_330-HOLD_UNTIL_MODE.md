@@ -6,8 +6,8 @@ An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notifica
 
 `HOLD_UNTIL_MODE ()`
 
-| Parameter | Type | Default | Capability | Description |
-| --------- | ---- | ------- | ---------- | ----------- |
+| Parameter       | Type   | Default   | Capability             | Description                                       |
+| --------------- | ------ | --------- | ---------------------- | ------------------------------------------------- |
 | HOLD_UNTIL_MODE | STRING | date,time | [`hold_until_mode`][2] | Hold-until mode list supported by the thermostat. |
 
 ### Lua example
