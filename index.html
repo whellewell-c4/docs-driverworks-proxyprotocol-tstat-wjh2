@@ -554,6 +554,9 @@
                     <a href="#thermostat-dynamic-notifications-can_humidify" class="toc-h2 toc-link" data-title="CAN_HUMIDIFY">CAN_HUMIDIFY</a>
                   </li>
                   <li>
+                    <a href="#thermostat-dynamic-notifications-can_lock_screen" class="toc-h2 toc-link" data-title="CAN_LOCK_SCREEN">CAN_LOCK_SCREEN</a>
+                  </li>
+                  <li>
                     <a href="#thermostat-dynamic-notifications-can_preset" class="toc-h2 toc-link" data-title="CAN_PRESET">CAN_PRESET</a>
                   </li>
                   <li>
@@ -636,18 +639,6 @@
                   </li>
                   <li>
                     <a href="#thermostat-dynamic-notifications-hold_until_resolution" class="toc-h2 toc-link" data-title="HOLD_UNTIL_RESOLUTION">HOLD_UNTIL_RESOLUTION</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_deadband" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_DEADBAND">HUMIDITY_SETPOINT_DEADBAND</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_max" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_MAX">HUMIDITY_SETPOINT_MAX</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_min" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_MIN">HUMIDITY_SETPOINT_MIN</a>
-                  </li>
-                  <li>
-                    <a href="#thermostat-dynamic-notifications-humidity_setpoint_resolution" class="toc-h2 toc-link" data-title="HUMIDITY_SETPOINT_RESOLUTION">HUMIDITY_SETPOINT_RESOLUTION</a>
                   </li>
                   <li>
                     <a href="#thermostat-dynamic-notifications-single_setpoint_max_c" class="toc-h2 toc-link" data-title="SINGLE_SETPOINT_MAX_C">SINGLE_SETPOINT_MAX_C</a>
@@ -1147,6 +1138,72 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
         <span class="nt">&lt;schedule_entry</span> <span class="na">Name =</span> <span class="s">&quot;Custom 2&quot;</span> <span class="na">Time =</span> <span class="s">&quot;1380&quot;</span> <span class="na">Enabled =</span> <span class="s">&quot;False&quot;</span> <span class="na">CanChangeName=</span><span class="s">&quot;True&quot;</span> <span class="na">CanDelete=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/schedule_day_info&gt;</span>
 <span class="nt">&lt;/schedule_default&gt;</span>
+</code></pre></div><h4 id='thermostat-capabilities-thermostat-capabilities-schedule_default-example-of-driver-providing-the-schedule-default'>Example of driver providing the schedule default</h4><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">DEFAULT_SCHEDULE_ENTRIES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="n">EntryIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">TimeHour</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">TimeMinute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="mi">70</span><span class="p">,</span> <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="mi">74</span><span class="p">,</span> <span class="n">Scale</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">CanChangeName</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">CanDelete</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">EntryName</span> <span class="o">=</span> <span class="s2">&quot;Wake&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">EntryIndex</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">TimeHour</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">TimeMinute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="mi">71</span><span class="p">,</span> <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="mi">75</span><span class="p">,</span> <span class="n">Scale</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">CanChangeName</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">CanDelete</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">EntryName</span> <span class="o">=</span> <span class="s2">&quot;Away&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">EntryIndex</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">TimeHour</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">TimeMinute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="mi">72</span><span class="p">,</span> <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="mi">76</span><span class="p">,</span> <span class="n">Scale</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">CanChangeName</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">CanDelete</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">EntryName</span> <span class="o">=</span> <span class="s2">&quot;Home&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">EntryIndex</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">TimeHour</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">TimeMinute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="mi">73</span><span class="p">,</span> <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="mi">77</span><span class="p">,</span> <span class="n">Scale</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">CanChangeName</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">CanDelete</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">EntryName</span> <span class="o">=</span> <span class="s2">&quot;Sleep&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">EntryIndex</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">TimeHour</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">TimeMinute</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">Enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="mi">74</span><span class="p">,</span> <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="mi">78</span><span class="p">,</span> <span class="n">Scale</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">CanChangeName</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">CanDelete</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">EntryName</span> <span class="o">=</span> <span class="s2">&quot;Custom 1&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">EntryIndex</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">TimeHour</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span> <span class="n">TimeMinute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="mi">75</span><span class="p">,</span> <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="mi">79</span><span class="p">,</span> <span class="n">Scale</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">CanChangeName</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">CanDelete</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">EntryName</span> <span class="o">=</span> <span class="s2">&quot;Custom 2&quot;</span> <span class="p">}</span>
+<span class="p">}</span></p>
+
+<p><span class="k">function</span> <span class="nf">SetDefaultSchedule</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">dayIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span> <span class="k">do</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">entry</span> <span class="k">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">DEFAULT_SCHEDULE_ENTRIES</span><span class="p">)</span> <span class="k">do</span>
+            <span class="n">SetScheduleEntry</span><span class="p">(</span>
+                <span class="n">dayIndex</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">EntryIndex</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">TimeHour</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">TimeMinute</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">Enabled</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">HeatSetpoint</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">CoolSetpoint</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">Scale</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">CanChangeName</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">CanDelete</span><span class="p">,</span>
+                <span class="n">entry</span><span class="p">.</span><span class="n">EntryName</span>
+            <span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span></p>
+
+<p><span class="k">function</span> <span class="nf">SetScheduleEntry</span><span class="p">(</span><span class="n">dayOfWeek</span><span class="p">,</span> <span class="n">entryIndex</span><span class="p">,</span> <span class="n">timeHour</span><span class="p">,</span> <span class="n">timeMinute</span><span class="p">,</span> <span class="n">isEnabled</span><span class="p">,</span> <span class="n">heatSetpoint</span><span class="p">,</span> <span class="n">coolSetpoint</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">canChangeName</span><span class="p">,</span> <span class="n">canDelete</span><span class="p">,</span> <span class="n">entryName</span><span class="p">)</span>
+    <span class="n">LogTrace</span><span class="p">(</span><span class="s2">&quot;SetScheduleEntry  %s %s %s %s %s %s %s %s %s %s %s&quot;</span><span class="p">,</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">dayOfWeek</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryIndex</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">timeHour</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">timeMinute</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">isEnabled</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">heatSetpoint</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">coolSetpoint</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">canChangeName</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">canDelete</span><span class="p">),</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryName</span><span class="p">))</span></p>
+
+<p><span class="kd">local</span> <span class="n">zeroBasedEntryIndex</span> <span class="o">=</span> <span class="nb">tonumber</span><span class="p">(</span><span class="n">entryIndex</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">zeroBasedEntryIndex</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">then</span>
+        <span class="n">zeroBasedEntryIndex</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+    <span class="n">zeroBasedEntryIndex</span> <span class="o">=</span> <span class="n">zeroBasedEntryIndex</span> <span class="o">-</span> <span class="mi">1</span></p>
+
+<p><span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">DayIndex</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">dayOfWeek</span><span class="p">),</span>
+        <span class="n">EntryIndex</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">zeroBasedEntryIndex</span><span class="p">),</span>
+        <span class="n">EnabledFlag</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">isEnabled</span><span class="p">),</span>
+        <span class="n">TimeMinutes</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">((</span><span class="nb">tonumber</span><span class="p">(</span><span class="n">timeHour</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="p">(</span><span class="nb">tonumber</span><span class="p">(</span><span class="n">timeMinute</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)),</span>
+        <span class="n">HeatSetpoint</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">heatSetpoint</span><span class="p">),</span>
+        <span class="n">CoolSetpoint</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">coolSetpoint</span><span class="p">),</span>
+        <span class="n">Units</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+    <span class="p">}</span></p>
+
+<p><span class="k">if</span><span class="p">(</span><span class="n">canChangeName</span> <span class="o">~=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">then</span>
+        <span class="n">params</span><span class="p">.</span><span class="n">CanChangeName</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">toboolean</span><span class="p">(</span><span class="n">canChangeName</span><span class="p">))</span>
+    <span class="k">end</span></p>
+
+<p><span class="k">if</span><span class="p">(</span><span class="n">canDelete</span> <span class="o">~=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">then</span>
+        <span class="n">params</span><span class="p">.</span><span class="n">CanDelete</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">toboolean</span><span class="p">(</span><span class="n">canDelete</span><span class="p">))</span>
+    <span class="k">end</span></p>
+
+<p><span class="k">if</span><span class="p">(</span><span class="n">entryName</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="ow">and</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryName</span><span class="p">)</span> <span class="o">~=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">then</span>
+        <span class="n">params</span><span class="p">.</span><span class="n">EntryName</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">entryName</span><span class="p">)</span>
+    <span class="k">end</span></p>
+
+<p><span class="n">SendNotify</span><span class="p">(</span><span class="s2">&quot;SCHEDULE_ENTRY_CHANGED&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="mi">5001</span><span class="p">)</span></p>
+
+<p><span class="k">if</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">UpdateScheduleEntryCapabilityTracking</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span> <span class="k">then</span>
+        <span class="n">UpdateScheduleEntryCapabilityTracking</span><span class="p">(</span><span class="n">zeroBasedEntryIndex</span><span class="p">,</span> <span class="n">entryName</span><span class="p">,</span> <span class="n">canChangeName</span><span class="p">,</span> <span class="n">canDelete</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
 </code></pre></div><h3 id='thermostat-capabilities-thermostat-capabilities-schedule_entry'>schedule_entry</h3>
 <p>There is one <code>&lt;schedule_entry&gt;</code> for each schedule entry during the day. Each entry attribute defines that entry. The following table describes each of the potential attributes. CanChangeName and CanDelete were added in OS Release 4.3.0.</p></p>
 
@@ -3212,6 +3269,41 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <span class="c1">-- if using the template code you can use SendNotify</span>
 <span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
 </code></pre></div>
+<h2 id='thermostat-dynamic-notifications-can_lock_screen'>CAN_LOCK_SCREEN</h2>
+<p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_lock_screen</code></a> capability. When set to <code>True</code>, the device reports that the Screen on the thermostat device can be locked; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>. The modes that are supported are provided by the <code>&lt;lock_screen_modes&gt;</code> capability. </p>
+<h3 id='thermostat-dynamic-notifications-can_lock_screen-name'>Name</h3>
+
+<p><code>CAN_LOCK_SCREEN ()</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Capability</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CAN_LOCK_SCREEN</td>
+<td>BOOL</td>
+<td>False</td>
+<td><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_lock_screen</code></a></td>
+<td>True/False. Thermostat supports screen locking.</td>
+</tr>
+</tbody></table>
+
+<h3 id='thermostat-dynamic-notifications-can_lock_screen-lua-example'>Lua example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="kd">local</span> <span class="n">CanLockScreen</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="kd">local</span> <span class="n">Params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">CAN_LOCK_SCREEN</span> <span class="o">=</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">CanLockScreen</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">bindingID</span><span class="p">,</span> <span class="s2">"DYNAMIC_CAPABILITIES_CHANGED"</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="s2">"NOTIFY"</span><span class="p">)</span>
+
+<span class="c1">-- if using the template code you can use SendNotify</span>
+<span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
+</code></pre></div>
 <h2 id='thermostat-dynamic-notifications-can_preset'>CAN_PRESET</h2>
 <p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based Boolean value (<code>True</code>/<code>False</code>) used to enable or disable the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>can_preset</code></a> capability. When set to <code>True</code>, the thermostat supports presets; when set to <code>False</code>, the capability is disabled. If the parameter is not provided, the default is <code>False</code>.</p>
 <h3 id='thermostat-dynamic-notifications-can_preset-name'>Name</h3>
@@ -4224,104 +4316,8 @@ The capability <code>has_vacation_mode</code> must be set to true for the vacati
 <span class="c1">-- if using the template code you can use SendNotify</span>
 <span class="c1">--SendNotify("DYNAMIC_CAPABILITIES_CHANGED", Params, BindingID)</span>
 </code></pre></div>
-<h2 id='thermostat-dynamic-notifications-humidity_setpoint_deadband'>HUMIDITY_SETPOINT_DEADBAND</h2>
-<p>What the deadband between humidify and dehumidify is, will do the same thing as the <code>setpoint_humidity_deadband</code> capability.</p>
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_deadband-name'>Name</h3>
-
-<p><code>HUMIDITY_SETPOINT_DEADBAND ()</code> </p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>num</td>
-<td>Default 10</td>
-</tr>
-</tbody></table>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_deadband-returns'>Returns</h3>
-
-<p><code>None</code></p>
-
-<h2 id='thermostat-dynamic-notifications-humidity_setpoint_max'>HUMIDITY_SETPOINT_MAX</h2>
-
-<p>Minimum Setpoint, int 0-100 that will do the same thing as the <code>setpoint_humidify_max</code> capability, </p>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_max-name'>Name</h3>
-
-<p><code>HUMIDITY_SETPOINT_MAX ()</code> </p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>num</td>
-<td>Default 100</td>
-</tr>
-</tbody></table>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_max-returns'>Returns</h3>
-
-<p><code>None</code></p>
-
-<h2 id='thermostat-dynamic-notifications-humidity_setpoint_min'>HUMIDITY_SETPOINT_MIN</h2>
-
-<p>Minimum Setpoint, int 0-100 that will do the same thing as the <code>setpoint_humidify_min</code> capability, </p>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_min-name'>Name</h3>
-
-<p><code>HUMIDITY_SETPOINT_MIN ()</code> </p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>num</td>
-<td>Default 0</td>
-</tr>
-</tbody></table>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_min-returns'>Returns</h3>
-
-<p><code>None</code></p>
-
-<h2 id='thermostat-dynamic-notifications-humidity_setpoint_resolution'>HUMIDITY_SETPOINT_RESOLUTION</h2>
-
-<p>What increment to use (ie 1,3,5,10,etc), will do the same thing as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_humidify_resolution</code></a> capability.</p>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_resolution-name'>Name</h3>
-
-<p><code>HUMIDITY_SETPOINT_RESOLUTION ()</code></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>num</td>
-<td>Default 1</td>
-</tr>
-</tbody></table>
-
-<h3 id='thermostat-dynamic-notifications-humidity_setpoint_resolution-returns'>Returns</h3>
-
-<p><code>None</code></p>
-
 <h2 id='thermostat-dynamic-notifications-single_setpoint_max_c'>SINGLE_SETPOINT_MAX_C</h2>
-
 <p>An optional parameter included in a <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-notifications-dynamic_capabilities_changed-tstat"><code>DYNAMIC_CAPABILITIES_CHANGED</code></a> notification received by the proxy via a <code>C4:SendToProxy</code> call. It is a string-based integer value used to update the maximum single setpoint in Celsius. The value is passed through the payload as a string representation of the number and is applied to the corresponding <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#thermostat-capabilities"><code>setpoint_single_max_c</code></a> capability. If the parameter is not provided, the default is <code>32</code>.</p>
-
 <h3 id='thermostat-dynamic-notifications-single_setpoint_max_c-name'>Name</h3>
 
 <p><code>SINGLE_SETPOINT_MAX_C ()</code></p>
