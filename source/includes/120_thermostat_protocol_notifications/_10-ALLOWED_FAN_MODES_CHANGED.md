@@ -1,4 +1,4 @@
-## ALLOWED\_FAN\_MODES \_CHANGED
+## ALLOWED\_FAN\_MODES\_CHANGED
 
 Updates the allowed fan mode list for the thermostat.
 

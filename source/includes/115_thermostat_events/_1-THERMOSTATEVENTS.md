@@ -40,3 +40,5 @@ In the past some UI's listened for variables not DataToUI calls. In 2.7.0 all U
 
 `Single Setpoint Changed` (Event=117)
 
+Lock Screen Mode Changed (Event=118)
+

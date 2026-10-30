@@ -6,9 +6,9 @@ An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notifica
 
 `HAS_SINGLE_SETPOINT ()`
 
-| Parameter | Type | Default | Capability | Range | Description |
-| --------- | ---- | ------- | ---------- | ----- | ----------- |
-| HAS_SINGLE_SETPOINT | BOOL | False | [`has_single_setpoint`][2] |  | True/False. Thermostat supports single-setpoint operation. |
+| Parameter           | Type | Default | Capability                 | Range | Description                                                |
+| ------------------- | ---- | ------- | -------------------------- | ----- | ---------------------------------------------------------- |
+| HAS_SINGLE_SETPOINT | BOOL | False   | [`has_single_setpoint`][2] |       | True/False. Thermostat supports single-setpoint operation. |
 
 ### Lua example
 ```lua

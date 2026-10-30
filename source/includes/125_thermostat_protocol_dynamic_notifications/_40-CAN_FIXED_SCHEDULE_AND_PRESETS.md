@@ -4,9 +4,9 @@ An optional parameter included in a [`DYNAMIC_CAPABILITIES_CHANGED`][1] notifica
 
 `CAN_FIXED_SCHEDULE_AND_PRESETS ()`
 
-| Parameter | Type | Default | Capability | Description |
-| --------- | ---- | ------- | ---------- | ----------- |
-| CAN_FIXED_SCHEDULE_AND_PRESETS | BOOL | False | [`can_fixed_schedule_and_presets`][2] | True/False. Thermostat supports fixed schedule and preset combinations. |
+| Parameter                      | Type | Default | Capability                            | Description                                                             |
+| ------------------------------ | ---- | ------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| CAN_FIXED_SCHEDULE_AND_PRESETS | BOOL | False   | [`can_fixed_schedule_and_presets`][2] | True/False. Thermostat supports fixed schedule and preset combinations. |
 
 ### Lua example
 ```lua
